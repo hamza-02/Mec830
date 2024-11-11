@@ -1,5 +1,7 @@
 #include <AccelStepper.h>
 
+#must add encoder code
+
 #define DEG_PER_STEP 1.8
 #define STEP_PER_REVOLUTION (360 / DEG_PER_STEP)
 
