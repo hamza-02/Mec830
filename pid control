@@ -1,0 +1,112 @@
+// Define pins for direction, pulse, and limit switches
+const int dirPin = 9;
+const int pulsePin = 8;
+const int limitSwitch1 = 12;
+const int limitSwitch2 = 13;
+const int encoderPinA = 2;
+const int encoderPinB = 3;
+
+// Motor settings
+const float stepAngle = 1.8; // Step angle in degrees
+const int microstepping = 1; // Microstepping on TB6600 driver
+const int pulsesPerRevolution = 500; // Encoder pulses per revolution
+
+// PID parameters
+double setpoint = 0;
+double Kp = 2.0, Ki = 0.5, Kd = 1.0;
+double previousError = 0;
+double integral = 0;
+
+// Encoder variables
+volatile int encoderCount = 0;
+bool motorEnabled = true; // Flag to control motor activity
+
+// Function to move motor one step with variable speed
+void moveOneStep(int pulseDelay, bool direction) {
+  digitalWrite(dirPin, direction ? HIGH : LOW);
+  digitalWrite(pulsePin, HIGH);
+  delayMicroseconds(pulseDelay);
+  digitalWrite(pulsePin, LOW);
+  delayMicroseconds(pulseDelay);
+}
+
+// Get current angle based on encoder count
+double getCurrentAngle() {
+  return (encoderCount * 360.0) / pulsesPerRevolution;
+}
+
+// PID control function
+double calculatePID(double setpoint, double currentAngle) {
+  double error = setpoint - currentAngle;
+  integral += error;
+  double derivative = error - previousError;
+  previousError = error;
+  
+  return Kp * error + Ki * integral + Kd * derivative;
+}
+
+// Encoder ISR
+void encoderISR() {
+  if (digitalRead(encoderPinB) == HIGH) {
+    encoderCount++;
+  } else {
+    encoderCount--;
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  // Initialize motor pins
+  pinMode(dirPin, OUTPUT);
+  pinMode(pulsePin, OUTPUT);
+  pinMode(limitSwitch1, INPUT_PULLUP);
+  pinMode(limitSwitch2, INPUT_PULLUP);
+  
+  // Initialize encoder pins
+  pinMode(encoderPinA, INPUT_PULLUP);
+  pinMode(encoderPinB, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(encoderPinA), encoderISR, RISING);
+
+  // Set initial angle as the target setpoint
+  setpoint = getCurrentAngle();
+}
+
+void loop() {
+  // Check if either limit switch is triggered
+  if (digitalRead(limitSwitch1) == LOW || digitalRead(limitSwitch2) == LOW) {
+    motorEnabled = false; // Disable motor if a limit switch is hit
+  }
+
+  // If motor is disabled, stop the program
+  if (!motorEnabled) {
+    Serial.println("Limit switch triggered. Shutting down.");
+    while (true) {
+      // Keep motor off; stay in an infinite loop
+      delay(1000); // Delay to avoid excessive serial printing
+    }
+  }
+
+  // Get the current angle
+  double currentAngle = getCurrentAngle();
+  
+  // Calculate PID output (pulse delay and direction)
+  double pidOutput = calculatePID(setpoint, currentAngle);
+
+  // Determine motor direction and speed based on PID output
+  bool direction = pidOutput > 0 ? HIGH : LOW; // Positive moves in one direction, negative in the other
+  int pulseDelay = constrain(abs(pidOutput), 200, 2000); // Constrain pulse delay for speed control
+
+  // Move the motor based on PID output
+  moveOneStep(pulseDelay, direction);
+
+  // Print debug information
+  Serial.print("Angle: ");
+  Serial.print(currentAngle);
+  Serial.print(" | Setpoint: ");
+  Serial.print(setpoint);
+  Serial.print(" | PID Output: ");
+  Serial.println(pidOutput);
+  
+  delay(10); // Loop delay to stabilize readings (adjust as needed)
+}
