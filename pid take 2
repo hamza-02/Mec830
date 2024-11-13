@@ -1,0 +1,121 @@
+#define ENCODER_OPTIMIZE_INTERRUPTS
+
+#include <AccelStepper.h>
+#include <PID_v1.h>
+#include <Encoder.h>
+
+// Pin Definitions
+const int dirPin = 9;        // Direction pin for the stepper motor
+const int pulsePin = 8;      // Pulse pin for the stepper motor
+const int encoderPinA = 2;   // Encoder signal A pin
+const int encoderPinB = 3;   // Encoder signal B pin
+const int limitSwitch1 = 12; // Limit switch 1 pin
+const int limitSwitch2 = 13; // Limit switch 2 pin
+
+// Motor settings
+const int motorStepsPerRev = 200;  // Full-step motor, 200 steps per revolution
+const int encoderPPR = 2400;       // Encoder has 2400 pulses per revolution (adjust accordingly)
+double stepsPerMM;  // How many steps per millimeter (can be adjusted based on your application)
+
+// PID parameters
+double setPoint, input, output, scaleFactor;
+double kp, ki, kd;
+PID pid(&input, &output, &setPoint, kp, ki, kd, DIRECT);
+
+// Encoder object
+Encoder encoder(encoderPinA, encoderPinB);
+
+// Motor control variables
+long counter = 0;  // Encoder count
+int outputDir;      // Direction variable, set based on `inverted`
+
+// AccelStepper setup
+AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
+
+void setup() {
+  Serial.begin(9600);  // Start serial communication for debugging
+
+  // Set PID parameters (These can be fine-tuned)
+  bool inverted = true;  // Set this as per your setup (true for reversed, false for normal direction)
+
+  if (inverted) {
+    outputDir = 1;        // Set direction for inverted mode
+    kp = 100.00;          // Adjust PID coefficients for inverted direction
+    ki = 10500.00;
+    kd = 0.00;
+    scaleFactor = -1 / 37.5;
+  } else {
+    outputDir = -1;       // Set direction for non-inverted mode
+    kp = 250.00;          // Adjust PID coefficients for normal direction
+    ki = 0.00;
+    kd = 5.00;
+    scaleFactor = -1 / 100;
+  }
+
+  pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);
+  
+  stepsPerMM = 5.0;  // Example, adjust based on your system setup
+  
+  // Set motor speed and acceleration
+  stepper.setMaxSpeed(1500);      // Max speed (steps per second)
+  stepper.setAcceleration(300);   // Max acceleration (steps per second squared)
+  stepper.setMinPulseWidth(10);    // Minimum pulse width for the stepper
+  
+  // Pin setup (Optional if you are using stepper driver with microstepping)
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+
+  // Initialize encoder position
+  setPoint = 0;
+  pid.SetMode(AUTOMATIC);
+  pid.SetOutputLimits(-1500, 1500);  // Output limits to match max speed
+
+  // Set initial encoder position
+  if (inverted) {
+    encoder.write(-1006);  // Initial position if inverted
+  } else {
+    encoder.write(0);      // Initial position if not inverted
+  }
+
+  
+
+  Serial.println("Setup complete, starting main loop.");
+}
+
+void loop() {
+  // Read encoder count and calculate the angle
+  long encoderCount = encoder.read();
+  
+  // Calculate the angle in degrees (based on the encoder pulses per revolution)
+  double ang = encoderCount * (360.0 / encoderPPR);  // Calculate angle from encoder count
+
+
+  Serial.print("\tAngle: ");
+  Serial.println(ang);
+
+  // Calculate the input for the PID controller
+  input = scaleFactor * stepper.currentPosition() / motorStepsPerRev + 200 * sin(ang * (PI / 180));
+
+  // Debugging: Print input value
+  Serial.print("Input: ");
+  Serial.println(input);
+
+  // Compute the PID output
+  pid.Compute();
+
+  // Debugging: Print PID output
+  Serial.print("PID Output: ");
+  Serial.println(output);
+
+  // Set motor speed based on the PID output
+  stepper.setSpeed(outputDir * output);  // Set the motor speed based on PID output
+  stepper.runSpeed();  // Run the motor at the current speed
+
+  // Debugging: Print motor output
+  Serial.print("Motor Output (Speed): ");
+  Serial.println(outputDir * output);
+
+  // Delay to stabilize loop (adjust as needed)
+  //delay(10);
+}
