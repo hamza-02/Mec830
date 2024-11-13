@@ -1,0 +1,31 @@
+#define ENCODER_OPTIMIZE_INTERRUPTS
+
+#include <Encoder.h>
+
+// Define encoder pin connections
+Encoder encoder(2, 3);  // Encoder connected to pins 2 and 3
+
+// Define the number of pulses per revolution for the encoder
+const int PPR = 2400;  // Encoder has 600 pulses per revolution
+
+void setup() {
+  Serial.begin(9600);  // Initialize serial communication
+
+  // Reset encoder position to 0
+  encoder.write(0);  // Reset the encoder count to 0
+}
+
+void loop() {
+  long encoderCount = encoder.read();  // Read the current encoder count
+  
+  // Calculate the angle based on the encoder count and pulses per revolution (PPR)
+  double angle = (encoderCount / (float)PPR) * 360.0;
+
+  // Print the encoder count and the corresponding angle
+  Serial.print("Encoder Count: ");
+  Serial.print(encoderCount);
+  Serial.print("\tAngle: ");
+  Serial.println(angle);  // Angle in degrees
+
+  delay(100);  // Small delay for stability and readability
+}
