@@ -1,0 +1,22 @@
+// Define pins for direction and pulse
+const int dirPin = 9;
+const int pulsePin = 8;
+# define stepsperrev 200
+
+void setup() {
+
+  pinMode(dirPin,OUTPUT);
+   pinMode(pulsePin,OUTPUT);
+}
+void loop() {
+  
+  for( int i=0; i<stepsperrev; i++){
+    digitalWrite(dirPin, HIGH);
+    digitalWrite(pulsePin, HIGH);
+    delayMicroseconds(500);
+    digitalWrite(pulsePin, LOW);
+    delayMicroseconds(500);
+    
+  }
+  
+}
