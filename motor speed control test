@@ -1,22 +1,25 @@
-// Define pins for direction and pulse
-const int dirPin = 9;
-const int pulsePin = 8;
-# define stepsperrev 200
+#include <AccelStepper.h>
+
+// Pin Definitions
+const int dirPin = 9;        // Direction pin for the stepper motor
+const int pulsePin = 8;      // Pulse pin for the stepper motor
+
+// Stepper Motor Setup
+AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
+
+// Speed and Acceleration Settings
+const float maxSpeed = 1500;       // Equivalent speed in steps per second
+const float acceleration = 300;    // Acceleration in steps per second^2
 
 void setup() {
+  Serial.begin(9600);
 
-  pinMode(dirPin,OUTPUT);
-   pinMode(pulsePin,OUTPUT);
+  // Set up stepper motor settings
+  stepper.setMaxSpeed(maxSpeed);       // Set the maximum speed
+  stepper.setAcceleration(acceleration); // Set a moderate acceleration
+  stepper.setSpeed(maxSpeed);          // Set a constant speed to move in one direction
 }
+
 void loop() {
-  
-  for( int i=0; i<stepsperrev; i++){
-    digitalWrite(dirPin, HIGH);
-    digitalWrite(pulsePin, HIGH);
-    delayMicroseconds(500);
-    digitalWrite(pulsePin, LOW);
-    delayMicroseconds(500);
-    
-  }
-  
+  stepper.runSpeed();  // Run the motor at the constant speed
 }
