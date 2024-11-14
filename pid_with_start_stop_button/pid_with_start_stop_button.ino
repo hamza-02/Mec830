@@ -64,6 +64,7 @@ void setup() {
   }
 
   digitalWrite(OFF_LED, HIGH);
+  digitalWrite(PID_LED, HIGH);
   pid.SetTunings(kp, ki, kd);
   pid.SetMode(AUTOMATIC);
   pid.SetOutputLimits(-1200, 1200);
