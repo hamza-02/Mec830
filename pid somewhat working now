@@ -5,8 +5,8 @@
 #include <Encoder.h>
 
 // Pin Definitions
-const int dirPin = 9;         // Direction pin for the stepper motor
-const int pulsePin = 8;       // Pulse pin for the stepper motor
+const int dirPin = 8;         // Direction pin for the stepper motor
+const int pulsePin = 9;       // Pulse pin for the stepper motor
 const int encoderPinA = 2;    // Encoder pin A
 const int encoderPinB = 3;    // Encoder pin B
 
