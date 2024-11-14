@@ -5,117 +5,105 @@
 #include <Encoder.h>
 
 // Pin Definitions
-const int dirPin = 9;        // Direction pin for the stepper motor
-const int pulsePin = 8;      // Pulse pin for the stepper motor
-const int encoderPinA = 2;   // Encoder signal A pin
-const int encoderPinB = 3;   // Encoder signal B pin
-const int limitSwitch1 = 12; // Limit switch 1 pin
-const int limitSwitch2 = 13; // Limit switch 2 pin
+const int dirPin = 9;         // Direction pin for the stepper motor
+const int pulsePin = 8;       // Pulse pin for the stepper motor
+const int encoderPinA = 2;    // Encoder pin A
+const int encoderPinB = 3;    // Encoder pin B
 
-// Motor settings
-const int motorStepsPerRev = 200;  // Full-step motor, 200 steps per revolution
-const int encoderPPR = 2400;       // Encoder has 2400 pulses per revolution (adjust accordingly)
-double stepsPerMM;  // How many steps per millimeter (can be adjusted based on your application)
+// Stepper Motor and Driver Settings
+const bool inverted = true;
+const int stepMode = 0;
+const int stepModes[6][5] = {
+  {5, 1, 0, 0, 0},
+  {10, 2, 1, 0, 0},
+  {20, 4, 0, 1, 0},
+  {40, 8, 1, 1, 0},
+  {80, 16, 0, 0, 1},
+  {160, 32, 1, 1, 1}
+};
+double stepsPerMM;
+int outputDir;
+AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
 
-// PID parameters
+// PID Control Variables
 double setPoint, input, output, scaleFactor;
 double kp, ki, kd;
 PID pid(&input, &output, &setPoint, kp, ki, kd, DIRECT);
 
-// Encoder object
+// Encoder Setup
 Encoder encoder(encoderPinA, encoderPinB);
 
-// Motor control variables
-long counter = 0;  // Encoder count
-int outputDir;      // Direction variable, set based on `inverted`
-
-// AccelStepper setup
-AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
-
 void setup() {
-  Serial.begin(9600);  // Start serial communication for debugging
+  Serial.begin(9600);
 
-  // Set PID parameters (These can be fine-tuned)
-  bool inverted = true;  // Set this as per your setup (true for reversed, false for normal direction)
-
+  // Set PID parameters based on inversion status
   if (inverted) {
-    outputDir = 1;        // Set direction for inverted mode
-    kp = 100.00;          // Adjust PID coefficients for inverted direction
+    outputDir = 1;
+    kp = 100.00;
     ki = 10500.00;
     kd = 0.00;
     scaleFactor = -1 / 37.5;
   } else {
-    outputDir = -1;       // Set direction for non-inverted mode
-    kp = 250.00;          // Adjust PID coefficients for normal direction
+    outputDir = -1;
+    kp = 250.00;
     ki = 0.00;
     kd = 5.00;
     scaleFactor = -1 / 100;
   }
 
-  pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);
+  pid.SetTunings(kp, ki, kd);
+  pid.SetMode(AUTOMATIC);
+  pid.SetOutputLimits(-1250, 1250);
+  stepper.setAcceleration(300);  // Experiment with values between 200 and 1000
+
+
+  // Stepper Motor Configuration
+  stepsPerMM = stepModes[stepMode][0];
+  stepper.setMaxSpeed(1500);       // Set a reasonable max speed
+  stepper.setMinPulseWidth(20);
   
-  stepsPerMM = 5.0;  // Example, adjust based on your system setup
-  
-  // Set motor speed and acceleration
-  stepper.setMaxSpeed(1500);      // Max speed (steps per second)
-  stepper.setAcceleration(300);   // Max acceleration (steps per second squared)
-  stepper.setMinPulseWidth(10);    // Minimum pulse width for the stepper
-  
-  // Pin setup (Optional if you are using stepper driver with microstepping)
+
+  // Configure microstepping pins
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
+  digitalWrite(6, stepModes[stepMode][2]);
+  digitalWrite(7, stepModes[stepMode][3]);
+  digitalWrite(8, stepModes[stepMode][4]);
 
-  // Initialize encoder position
+  // Initialize the encoder and set the initial setpoint
   setPoint = 0;
-  pid.SetMode(AUTOMATIC);
-  pid.SetOutputLimits(-1500, 1500);  // Output limits to match max speed
+  encoder.write(0);
 
-  // Set initial encoder position
-  if (inverted) {
-    encoder.write(-1006);  // Initial position if inverted
-  } else {
-    encoder.write(0);      // Initial position if not inverted
+  // Wait for the encoder to reach zero position
+  while (encoder.read() < 0) {
+    // NOOP
   }
-
-  
-
-  Serial.println("Setup complete, starting main loop.");
 }
 
 void loop() {
-  // Read encoder count and calculate the angle
-  long encoderCount = encoder.read();
-  
-  // Calculate the angle in degrees (based on the encoder pulses per revolution)
-  double ang = encoderCount * (360.0 / encoderPPR);  // Calculate angle from encoder count
+  // Main PID control loop for stepper movement
+  int count = encoder.read();
+  double angle = count * (360.0 / 2000.0); // Convert encoder count to angle
+  input = scaleFactor * stepper.currentPosition() / stepsPerMM + 200 * sin(angle * (PI / 180));
 
-
-  Serial.print("\tAngle: ");
-  Serial.println(ang);
-
-  // Calculate the input for the PID controller
-  input = scaleFactor * stepper.currentPosition() / motorStepsPerRev + 200 * sin(ang * (PI / 180));
-
-  // Debugging: Print input value
-  Serial.print("Input: ");
-  Serial.println(input);
-
-  // Compute the PID output
   pid.Compute();
 
-  // Debugging: Print PID output
-  Serial.print("PID Output: ");
-  Serial.println(output);
+  // Set motor speed and direction based on PID output
+  stepper.setSpeed(outputDir * output);
+  stepper.runSpeed();
 
-  // Set motor speed based on the PID output
-  stepper.setSpeed(outputDir * output);  // Set the motor speed based on PID output
-  stepper.runSpeed();  // Run the motor at the current speed
+  // Debug output for monitoring
+  Serial.print("Encoder Count: ");
+  Serial.print(count);
+  Serial.print(" | Angle: ");
+  Serial.print(angle);
+  Serial.print(" degrees | Setpoint: ");
+  Serial.print(setPoint);
+  Serial.print(" | PID Output (Speed Command): ");
+  Serial.print(output);
+  Serial.print(" | Current Motor Speed: ");
+  Serial.println(stepper.speed());
 
-  // Debugging: Print motor output
-  Serial.print("Motor Output (Speed): ");
-  Serial.println(outputDir * output);
-
-  // Delay to stabilize loop (adjust as needed)
-  //delay(10);
+  delay(100); // Adjust delay for stability as needed
 }
