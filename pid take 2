@@ -12,7 +12,7 @@ const int encoderPinB = 3;    // Encoder pin B
 
 // Stepper Motor and Driver Settings
 const bool inverted = true;
-const int stepMode = 0;
+const int stepMode = 3;
 const int stepModes[6][5] = {
   {5, 1, 0, 0, 0},
   {10, 2, 1, 0, 0},
@@ -34,14 +34,14 @@ PID pid(&input, &output, &setPoint, kp, ki, kd, DIRECT);
 Encoder encoder(encoderPinA, encoderPinB);
 
 void setup() {
-  Serial.begin(9600);
+  
 
   // Set PID parameters based on inversion status
   if (inverted) {
     outputDir = 1;
-    kp = 100.00;
-    ki = 10500.00;
-    kd = 0.00;
+    kp = 55.00;
+    ki = 600.00;
+    kd = 5.00;
     scaleFactor = -1 / 37.5;
   } else {
     outputDir = -1;
@@ -54,13 +54,13 @@ void setup() {
   pid.SetTunings(kp, ki, kd);
   pid.SetMode(AUTOMATIC);
   pid.SetOutputLimits(-1250, 1250);
-  stepper.setAcceleration(300);  // Experiment with values between 200 and 1000
+  //stepper.setAcceleration(300);  // Experiment with values between 200 and 1000
 
 
   // Stepper Motor Configuration
   stepsPerMM = stepModes[stepMode][0];
   stepper.setMaxSpeed(1500);       // Set a reasonable max speed
-  stepper.setMinPulseWidth(20);
+  stepper.setMinPulseWidth(5);
   
 
   // Configure microstepping pins
@@ -94,16 +94,5 @@ void loop() {
   stepper.runSpeed();
 
   // Debug output for monitoring
-  Serial.print("Encoder Count: ");
-  Serial.print(count);
-  Serial.print(" | Angle: ");
-  Serial.print(angle);
-  Serial.print(" degrees | Setpoint: ");
-  Serial.print(setPoint);
-  Serial.print(" | PID Output (Speed Command): ");
-  Serial.print(output);
-  Serial.print(" | Current Motor Speed: ");
-  Serial.println(stepper.speed());
 
-  delay(100); // Adjust delay for stability as needed
 }
