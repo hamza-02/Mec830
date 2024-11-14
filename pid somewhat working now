@@ -22,7 +22,6 @@ const int stepModes[6][5] = {
   {160, 32, 1, 1, 1}
 };
 
-
 double stepsPerMM;
 int outputDir;
 AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
@@ -36,30 +35,32 @@ PID pid(&input, &output, &setPoint, kp, ki, kd, DIRECT);
 Encoder encoder(encoderPinA, encoderPinB);
 
 void setup() {
-  
-
   // Set PID parameters based on inversion status
   if (inverted) {
-    outputDir = 1;
-    kp = 25.00;
-    ki = 0.00;
-    kd = 1.00;
+    outputDir = -1;
+    kp = 65.00;
+    ki = 600.00;
+    kd = 0.3;
     scaleFactor = -1 / 37.5;
+
+    
   } else {
     outputDir = -1;
-    kp = 25.00;
-    ki = 0.00;
-    kd = 0.1;
+    kp = 55.00;
+    ki = 600.00;
+    kd = 0.9;
     scaleFactor = -1 / 100;
   }
 
-  pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);
-
+  pid.SetTunings(kp, ki, kd);
+  pid.SetMode(AUTOMATIC);
+  pid.SetOutputLimits(-1200, 1200);
 
   stepsPerMM = stepModes[stepMode][0];
-  stepper.setMaxSpeed(1500);       // Set a reasonable max speed
+  stepper.setMaxSpeed(2000);       // Set a reasonable max speed
   stepper.setMinPulseWidth(5);
-   // Configure microstepping pins
+
+  // Configure microstepping pins
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
@@ -68,15 +69,6 @@ void setup() {
   digitalWrite(8, stepModes[stepMode][4]);
 
   setPoint = 0;
-  pid.SetMode(AUTOMATIC);
-  pid.SetOutputLimits(-1950, 1950);
-  //pid.SetTunings(kp, ki, kd);
-
-
-  
-
- 
- 
   encoder.write(0);
 
   // Wait for the encoder to reach zero position
@@ -86,17 +78,22 @@ void setup() {
 }
 
 void loop() {
-  // Main PID control loop for stepper movement
+  // Read encoder count and calculate angle
   int count = encoder.read();
   double angle = count * (360.0 / 2000.0); // Convert encoder count to angle
-  input = scaleFactor * stepper.currentPosition() / stepsPerMM + 200 * sin(angle * (PI / 180));
+  
+  // Check if the angle exceeds -30 or 30 degrees
+  if (angle < -20|| angle > 20) {
+    stepper.setSpeed(0);  // Stop the motor
+    stepper.runSpeed();   // Apply the stop command
+    return;               // Exit the loop early
+  }
 
+  // Continue with PID control if angle is within -30 to 30 range
+  input = scaleFactor * stepper.currentPosition() / stepsPerMM + 200 * sin(angle * (PI / 180));
   pid.Compute();
 
   // Set motor speed and direction based on PID output
   stepper.setSpeed(outputDir * output);
   stepper.runSpeed();
-
- 
-
 }
