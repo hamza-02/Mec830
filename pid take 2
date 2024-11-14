@@ -21,6 +21,8 @@ const int stepModes[6][5] = {
   {80, 16, 0, 0, 1},
   {160, 32, 1, 1, 1}
 };
+
+
 double stepsPerMM;
 int outputDir;
 AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
@@ -39,31 +41,25 @@ void setup() {
   // Set PID parameters based on inversion status
   if (inverted) {
     outputDir = 1;
-    kp = 55.00;
-    ki = 600.00;
-    kd = 5.00;
+    kp = 25.00;
+    ki = 0.00;
+    kd = 1.00;
     scaleFactor = -1 / 37.5;
   } else {
     outputDir = -1;
-    kp = 250.00;
+    kp = 25.00;
     ki = 0.00;
-    kd = 5.00;
+    kd = 0.1;
     scaleFactor = -1 / 100;
   }
 
-  pid.SetTunings(kp, ki, kd);
-  pid.SetMode(AUTOMATIC);
-  pid.SetOutputLimits(-1250, 1250);
-  //stepper.setAcceleration(300);  // Experiment with values between 200 and 1000
+  pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);pid = PID(&input, &output, &setPoint, kp, ki, kd, DIRECT);
 
 
-  // Stepper Motor Configuration
   stepsPerMM = stepModes[stepMode][0];
   stepper.setMaxSpeed(1500);       // Set a reasonable max speed
   stepper.setMinPulseWidth(5);
-  
-
-  // Configure microstepping pins
+   // Configure microstepping pins
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
@@ -71,8 +67,16 @@ void setup() {
   digitalWrite(7, stepModes[stepMode][3]);
   digitalWrite(8, stepModes[stepMode][4]);
 
-  // Initialize the encoder and set the initial setpoint
   setPoint = 0;
+  pid.SetMode(AUTOMATIC);
+  pid.SetOutputLimits(-1950, 1950);
+  //pid.SetTunings(kp, ki, kd);
+
+
+  
+
+ 
+ 
   encoder.write(0);
 
   // Wait for the encoder to reach zero position
@@ -93,6 +97,6 @@ void loop() {
   stepper.setSpeed(outputDir * output);
   stepper.runSpeed();
 
-  // Debug output for monitoring
+ 
 
 }
