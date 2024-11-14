@@ -10,6 +10,13 @@ const int pulsePin = 9;       // Pulse pin for the stepper motor
 const int encoderPinA = 2;    // Encoder pin A
 const int encoderPinB = 3;    // Encoder pin B
 
+const int button1Pin = 10;  // STOP BUTTON
+const int button2Pin = 11;  // START Button
+const int START_LED = 6;   
+const int OFF_LED = 7;   
+const int POLE_LED = 4;     
+const int PID_LED = 5;  
+
 // Stepper Motor and Driver Settings
 const bool inverted = true;
 const int stepMode = 3;
@@ -38,9 +45,9 @@ void setup() {
   // Set PID parameters based on inversion status
   if (inverted) {
     outputDir = -1;
-    kp = 65.00;
-    ki = 600.00;
-    kd = 0.3;
+    kp = 55.00;
+    ki = 1000.00;
+    kd = 0;
     scaleFactor = -1 / 37.5;
 
     
@@ -60,13 +67,7 @@ void setup() {
   stepper.setMaxSpeed(2000);       // Set a reasonable max speed
   stepper.setMinPulseWidth(5);
 
-  // Configure microstepping pins
-  pinMode(6, OUTPUT);
-  pinMode(7, OUTPUT);
-  pinMode(8, OUTPUT);
-  digitalWrite(6, stepModes[stepMode][2]);
-  digitalWrite(7, stepModes[stepMode][3]);
-  digitalWrite(8, stepModes[stepMode][4]);
+ 
 
   setPoint = 0;
   encoder.write(0);
