@@ -50,7 +50,7 @@ void setup() {
   if (inverted) {
     outputDir = -1;
     kp = 55.00;
-    ki = 1000.00;
+    ki = 100.00;
     kd = 0;
     scaleFactor = -1 / 37.5;
 
@@ -70,7 +70,7 @@ void setup() {
   pid.SetOutputLimits(-1200, 1200);
 
   stepsPerMM = stepModes[stepMode][0];
-  stepper.setMaxSpeed(2000);       // Set a reasonable max speed
+  stepper.setMaxSpeed(20000);       // Set a reasonable max speed
   stepper.setMinPulseWidth(5);
 
   pinMode(start_button, INPUT_PULLUP);
