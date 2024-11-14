@@ -50,7 +50,7 @@ void setup() {
   if (inverted) {
     outputDir = -1;
     kp = 55.00;
-    ki = 100.00;
+    ki = 1000.00;
     kd = 0;
     scaleFactor = -1 / 37.5;
 
