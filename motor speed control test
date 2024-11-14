@@ -1,25 +1,63 @@
 #include <AccelStepper.h>
 
 // Pin Definitions
-const int dirPin = 9;        // Direction pin for the stepper motor
-const int pulsePin = 8;      // Pulse pin for the stepper motor
+const int dirPin = 9;         // Direction pin for the stepper motor
+const int pulsePin = 8;       // Pulse pin for the stepper motor
+const int limitSwitch1 = 12;  // First limit switch
+const int limitSwitch2 = 13;  // Second limit switch
 
 // Stepper Motor Setup
 AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
 
 // Speed and Acceleration Settings
-const float maxSpeed = 1500;       // Equivalent speed in steps per second
+const float maxSpeed = 1500;       // Set the desired max speed in steps per second
 const float acceleration = 300;    // Acceleration in steps per second^2
+
+// State variables
+bool movingTowardsLimit1 = true;   // Track the direction of movement
 
 void setup() {
   Serial.begin(9600);
 
   // Set up stepper motor settings
   stepper.setMaxSpeed(maxSpeed);       // Set the maximum speed
-  stepper.setAcceleration(acceleration); // Set a moderate acceleration
-  stepper.setSpeed(maxSpeed);          // Set a constant speed to move in one direction
+  stepper.setAcceleration(acceleration); // Set the acceleration
+  stepper.setSpeed(maxSpeed);          // Start moving towards limit switch 1
+
+  // Configure limit switches as inputs with pull-up resistors
+  pinMode(limitSwitch1, INPUT_PULLUP);
+  pinMode(limitSwitch2, INPUT_PULLUP);
+
+  Serial.println("Motor setup complete, starting movement.");
 }
 
 void loop() {
-  stepper.runSpeed();  // Run the motor at the constant speed
+  // Check if both limit switches are triggered
+  if (digitalRead(limitSwitch1) == LOW && digitalRead(limitSwitch2) == LOW) {
+    Serial.println("Both limit switches triggered. Stopping motor.");
+    stepper.setSpeed(0);  // Stop the motor
+    stepper.stop();       // Immediately stop the motor
+
+    // Enter an infinite loop to halt further actions
+    while (true) {
+      delay(1000);  // Delay to avoid excessive serial printing
+    }
+  }
+
+  // Check limit switches based on the direction of movement
+  if (digitalRead(limitSwitch1) == LOW && movingTowardsLimit1) {
+    Serial.println("Limit switch 1 triggered. Reversing direction.");
+    stepper.setSpeed(-maxSpeed);        // Reverse direction to move away from limit switch 1
+    movingTowardsLimit1 = false;        // Update direction state
+    delay(200);                         // Small delay to move away from the switch
+  } 
+  else if (digitalRead(limitSwitch2) == LOW && !movingTowardsLimit1) {
+    Serial.println("Limit switch 2 triggered. Reversing direction.");
+    stepper.setSpeed(maxSpeed);         // Reverse direction to move away from limit switch 2
+    movingTowardsLimit1 = true;         // Update direction state
+    delay(200);                         // Small delay to move away from the switch
+  }
+
+  // Run the motor at the set speed
+  stepper.runSpeed();  // Run the motor at the current speed
 }
