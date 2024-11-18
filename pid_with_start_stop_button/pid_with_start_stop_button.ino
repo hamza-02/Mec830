@@ -4,18 +4,22 @@
 #include <PID_v1.h>
 #include <Encoder.h>
 
+bool on = false;
+
 // Pin Definitions
 const int dirPin = 8;         // Direction pin for the stepper motor
 const int pulsePin = 9;       // Pulse pin for the stepper motor
 const int encoderPinA = 2;    // Encoder pin A
 const int encoderPinB = 3;    // Encoder pin B
 
-const int button1Pin = 10;  // STOP BUTTON
-const int button2Pin = 11;  // START Button
-const int START_LED = 6;   
-const int OFF_LED = 7;   
+const int stop_button = 10;  // STOP BUTTON
+const int start_button = 11;  // START Button
+const int START_LED = 7;   
+const int OFF_LED = 6;   
 const int POLE_LED = 4;     
 const int PID_LED = 5;  
+
+
 
 // Stepper Motor and Driver Settings
 const bool inverted = true;
@@ -59,14 +63,22 @@ void setup() {
     scaleFactor = -1 / 100;
   }
 
+  digitalWrite(OFF_LED, HIGH);
+  digitalWrite(PID_LED, HIGH);
   pid.SetTunings(kp, ki, kd);
   pid.SetMode(AUTOMATIC);
   pid.SetOutputLimits(-1200, 1200);
 
   stepsPerMM = stepModes[stepMode][0];
-  stepper.setMaxSpeed(2000);       // Set a reasonable max speed
+  stepper.setMaxSpeed(20000);       // Set a reasonable max speed
   stepper.setMinPulseWidth(5);
 
+  pinMode(start_button, INPUT_PULLUP);
+  pinMode(stop_button, INPUT_PULLUP);
+  pinMode(START_LED, OUTPUT);
+  pinMode(OFF_LED, OUTPUT);
+  pinMode(POLE_LED, OUTPUT);
+  pinMode(PID_LED, OUTPUT);
  
 
   setPoint = 0;
@@ -82,19 +94,33 @@ void loop() {
   // Read encoder count and calculate angle
   int count = encoder.read();
   double angle = count * (360.0 / 2000.0); // Convert encoder count to angle
-  
-  // Check if the angle exceeds -30 or 30 degrees
-  if (angle < -20|| angle > 20) {
-    stepper.setSpeed(0);  // Stop the motor
-    stepper.runSpeed();   // Apply the stop command
-    return;               // Exit the loop early
+
+  if (digitalRead(start_button) == LOW){
+    on = true;
+    digitalWrite(OFF_LED, LOW);
+    digitalWrite(START_LED, HIGH);
   }
-
-  // Continue with PID control if angle is within -30 to 30 range
-  input = scaleFactor * stepper.currentPosition() / stepsPerMM + 200 * sin(angle * (PI / 180));
-  pid.Compute();
-
-  // Set motor speed and direction based on PID output
-  stepper.setSpeed(outputDir * output);
-  stepper.runSpeed();
-}
+  else if (digitalRead(stop_button) == LOW){
+    on = false;
+    digitalWrite(OFF_LED, HIGH);
+    digitalWrite(START_LED, LOW);
+  }
+  
+  if (on == true){
+      // Check if the angle exceeds -30 or 30 degrees
+    if (angle < -20|| angle > 20) {
+      stepper.setSpeed(0);  // Stop the motor
+      stepper.runSpeed();   // Apply the stop command
+      return;               // Exit the loop early
+    }
+  
+    // Continue with PID control if angle is within -30 to 30 range
+    input = scaleFactor * stepper.currentPosition() / stepsPerMM + 200 * sin(angle * (PI / 180));
+    pid.Compute();
+  
+    // Set motor speed and direction based on PID output
+    stepper.setSpeed(outputDir * output);
+    stepper.runSpeed();
+    }
+  }
+ 
