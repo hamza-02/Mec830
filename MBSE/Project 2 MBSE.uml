@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks" xmlns:ConstraintBlocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks" xmlns:DeprecatedElements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements" xmlns:Requirements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//constraintblocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//deprecatedelements http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//requirements">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks" xmlns:ConstraintBlocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks" xmlns:DeprecatedElements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements" xmlns:PortsAndFlows="http://www.eclipse.org/papyrus/sysml/1.6/SysML/PortsAndFlows" xmlns:Requirements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//constraintblocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//deprecatedelements http://www.eclipse.org/papyrus/sysml/1.6/SysML/PortsAndFlows http://www.eclipse.org/papyrus/sysml/1.6/SysML#//portsandflows http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//requirements">
   <uml:Model xmi:id="_tw-ZMKXTEe-jX-0_OLz1Iw" name="Project 2 MBSE">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_tyussKXTEe-jX-0_OLz1Iw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -436,8 +436,8 @@
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pg_UcaYEEe-Vyf2mYXu1nw" name="Message7ReceiveEvent" covered="_6tt7oKYDEe-Vyf2mYXu1nw" message="_pg4mwKYEEe-Vyf2mYXu1nw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_reDeEKYEEe-Vyf2mYXu1nw" name="Message10SendEvent" covered="_2rnYIKYDEe-Vyf2mYXu1nw" message="_reC3AKYEEe-Vyf2mYXu1nw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_reDeEaYEEe-Vyf2mYXu1nw" name="Message10ReceiveEvent" covered="_8qvB8KYDEe-Vyf2mYXu1nw" message="_reC3AKYEEe-Vyf2mYXu1nw"/>
-        <fragment xmi:type="uml:CombinedFragment" xmi:id="__zRDsKYEEe-Vyf2mYXu1nw" name="Control Loop" covered="_6tt7oKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _9krhsKYDEe-Vyf2mYXu1nw" interactionOperator="loop">
-          <operand xmi:type="uml:InteractionOperand" xmi:id="__zS44KYEEe-Vyf2mYXu1nw" name="InteractionOperand0" covered="_6tt7oKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _9krhsKYDEe-Vyf2mYXu1nw">
+        <fragment xmi:type="uml:CombinedFragment" xmi:id="__zRDsKYEEe-Vyf2mYXu1nw" name="Control Loop" covered="_9krhsKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _6tt7oKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw" interactionOperator="loop">
+          <operand xmi:type="uml:InteractionOperand" xmi:id="__zS44KYEEe-Vyf2mYXu1nw" name="InteractionOperand0" covered="_9krhsKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _6tt7oKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw">
             <guard xmi:type="uml:InteractionConstraint" xmi:id="__zS44aYEEe-Vyf2mYXu1nw" name="guard"/>
           </operand>
         </fragment>
@@ -459,6 +459,11 @@
         <message xmi:type="uml:Message" xmi:id="_3_tn0KYEEe-Vyf2mYXu1nw" name="send_control()" messageSort="asynchCall" receiveEvent="_3_uO4aYEEe-Vyf2mYXu1nw" sendEvent="_3_uO4KYEEe-Vyf2mYXu1nw"/>
         <message xmi:type="uml:Message" xmi:id="_5tSj8KYEEe-Vyf2mYXu1nw" name="apply_control()" messageSort="asynchCall" receiveEvent="_5tTLAaYEEe-Vyf2mYXu1nw" sendEvent="_5tTLAKYEEe-Vyf2mYXu1nw"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:InformationFlow" xmi:id="_1BdBwKYWEe-wsIX_jvfgdw" name="ItemFlow" informationSource="_DgB-QKXiEe-jX-0_OLz1Iw" informationTarget="_Gf_KoKYWEe-wsIX_jvfgdw"/>
+      <packagedElement xmi:type="uml:InformationFlow" xmi:id="_1cO5QKYWEe-wsIX_jvfgdw" name="ItemFlow" informationSource="_a3_jMKXiEe-jX-0_OLz1Iw" informationTarget="_Gf_KoKYWEe-wsIX_jvfgdw"/>
+      <packagedElement xmi:type="uml:InformationFlow" xmi:id="_OiJ00KYXEe-wsIX_jvfgdw" name="ItemFlow" informationSource="_p0T_QKXnEe-jX-0_OLz1Iw" informationTarget="_SJ-skKYWEe-wsIX_jvfgdw"/>
+      <packagedElement xmi:type="uml:InformationFlow" xmi:id="_RNhO4KYXEe-wsIX_jvfgdw" name="ItemFlow48" informationSource="_mnv8oKXnEe-jX-0_OLz1Iw" informationTarget="_OTCQMKYWEe-wsIX_jvfgdw"/>
+      <packagedElement xmi:type="uml:InformationFlow" xmi:id="_RzMHwKYXEe-wsIX_jvfgdw" name="ItemFlow49" informationSource="_oJe1IKXnEe-jX-0_OLz1Iw" informationTarget="_OTCQMKYWEe-wsIX_jvfgdw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_L33TcKYEEe-Vyf2mYXu1nw" name="Inverted Pendulum on a Cart" useCase="_mTWhgKYJEe-Vyf2mYXu1nw _oOupEKYJEe-Vyf2mYXu1nw _tAdSsKYJEe-Vyf2mYXu1nw _xKzzQKYJEe-Vyf2mYXu1nw _x4VnoKYJEe-Vyf2mYXu1nw _5nnngKYJEe-Vyf2mYXu1nw _8RBSsKYJEe-Vyf2mYXu1nw __IZ6EKYKEe-Vyf2mYXu1nw">
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mTWhgKYJEe-Vyf2mYXu1nw" name="Start Button Pressed" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
@@ -701,6 +706,19 @@
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_NoTjEKYUEe-Vyf2mYXu1nw" name="Refine" client="_shHxsKYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_OJQ7EKYUEe-Vyf2mYXu1nw" name="Refine" client="_uNo94KYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CgN-4KYVEe-wsIX_jvfgdw" name="Inverted Pendulum">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_omhAgKYVEe-wsIX_jvfgdw" name="pendulum" type="_oCbFgKXUEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qB1vAKYVEe-wsIX_jvfgdw" name="cart" type="_hnegsKXnEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Gf_KoKYWEe-wsIX_jvfgdw" name="x''" type="_HWacUKYWEe-wsIX_jvfgdw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OTCQMKYWEe-wsIX_jvfgdw" name="theta''" type="_PwgTwKYWEe-wsIX_jvfgdw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SJ-skKYWEe-wsIX_jvfgdw" name="F" type="_Sl_TIKYWEe-wsIX_jvfgdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BohscKYWEe-wsIX_jvfgdw" name="ConstraintBlock1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HWacUKYWEe-wsIX_jvfgdw" name="Acceleration"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PwgTwKYWEe-wsIX_jvfgdw" name="Angular Acceleration"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Sl_TIKYWEe-wsIX_jvfgdw" name="Force"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_UXVU8KYWEe-wsIX_jvfgdw" name="Friction"/>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_K-5JcKYXEe-wsIX_jvfgdw" name="ItemFlow" informationSource="_SJ-skKYWEe-wsIX_jvfgdw" informationTarget="_3A8_sKXnEe-jX-0_OLz1Iw"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_txbsMKXTEe-jX-0_OLz1Iw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_txdhYKXTEe-jX-0_OLz1Iw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#/"/>
@@ -886,4 +904,16 @@
   <Requirements:Refine xmi:id="_Ltv64KYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_LtuFsKYUEe-Vyf2mYXu1nw" base_Abstraction="_LtuFsKYUEe-Vyf2mYXu1nw"/>
   <Requirements:Refine xmi:id="_NoV_UKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_NoTjEKYUEe-Vyf2mYXu1nw" base_Abstraction="_NoTjEKYUEe-Vyf2mYXu1nw"/>
   <Requirements:Refine xmi:id="_OJSwQKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_OJQ7EKYUEe-Vyf2mYXu1nw" base_Abstraction="_OJQ7EKYUEe-Vyf2mYXu1nw"/>
+  <Blocks:Block xmi:id="_Cipn0KYVEe-wsIX_jvfgdw" base_Class="_CgN-4KYVEe-wsIX_jvfgdw"/>
+  <ConstraintBlocks:ConstraintBlock xmi:id="_Bol94KYWEe-wsIX_jvfgdw" base_Class="_BohscKYWEe-wsIX_jvfgdw"/>
+  <ConstraintBlocks:ConstraintBlock xmi:id="_HWeGsKYWEe-wsIX_jvfgdw" base_Class="_HWacUKYWEe-wsIX_jvfgdw"/>
+  <ConstraintBlocks:ConstraintBlock xmi:id="_Pwj-IKYWEe-wsIX_jvfgdw" base_Class="_PwgTwKYWEe-wsIX_jvfgdw"/>
+  <ConstraintBlocks:ConstraintBlock xmi:id="_SmCWcKYWEe-wsIX_jvfgdw" base_Class="_Sl_TIKYWEe-wsIX_jvfgdw"/>
+  <ConstraintBlocks:ConstraintBlock xmi:id="_UXY_UKYWEe-wsIX_jvfgdw" base_Class="_UXVU8KYWEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_1BgsIKYWEe-wsIX_jvfgdw" base_InformationFlow="_1BdBwKYWEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_1cRVgKYWEe-wsIX_jvfgdw" base_InformationFlow="_1cO5QKYWEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_K-9a4KYXEe-wsIX_jvfgdw" base_InformationFlow="_K-5JcKYXEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_OiLqAKYXEe-wsIX_jvfgdw" base_InformationFlow="_OiJ00KYXEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_RNjEEKYXEe-wsIX_jvfgdw" base_InformationFlow="_RNhO4KYXEe-wsIX_jvfgdw"/>
+  <PortsAndFlows:ItemFlow xmi:id="_RzN88KYXEe-wsIX_jvfgdw" base_InformationFlow="_RzMHwKYXEe-wsIX_jvfgdw"/>
 </xmi:XMI>
