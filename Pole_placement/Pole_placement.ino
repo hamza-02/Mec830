@@ -66,10 +66,14 @@ void setup() {
 }
 
 void loop() {
+  // Continuously run the stepper for smooth motion
+  stepper.runSpeed();
+
   if (!zeroInitialized) {
     initializeZeroPosition();
   } else {
-    runPolePlacementControl();
+    // Perform pole placement control logic
+    executePolePlacementControl();
   }
 }
 
@@ -85,25 +89,23 @@ void initializeZeroPosition() {
 
   if (digitalRead(limitSwitch1) == LOW && movingTowardsLimit1) {
     limitSwitch1Count++;
-    if (limitSwitch1Count == 3) {
+    if (limitSwitch1Count == 2) {
       position1 = stepper.currentPosition();
-      if (limitSwitch2Count == 3) calculateMidpointAndMove();
+      if (limitSwitch2Count == 2) calculateMidpointAndMove();
     }
     movingTowardsLimit1 = false;
     stepper.setSpeed(-maxSpeed);
     delay(200);
   } else if (digitalRead(limitSwitch2) == LOW && !movingTowardsLimit1) {
     limitSwitch2Count++;
-    if (limitSwitch2Count == 3) {
+    if (limitSwitch2Count == 2) {
       position2 = stepper.currentPosition();
-      if (limitSwitch1Count == 3) calculateMidpointAndMove();
+      if (limitSwitch1Count == 2) calculateMidpointAndMove();
     }
     movingTowardsLimit1 = true;
     stepper.setSpeed(maxSpeed);
     delay(200);
   }
-
-  stepper.runSpeed();
 }
 
 void calculateMidpointAndMove() {
@@ -118,8 +120,8 @@ void calculateMidpointAndMove() {
   encoder.write(0);
 }
 
-// Pole Placement Control Loop
-void runPolePlacementControl() {
+// Pole Placement Control Logic
+void executePolePlacementControl() {
   unsigned long currentTime = millis();
 
   if (currentTime - lastControlTime >= controlInterval) {
@@ -131,17 +133,12 @@ void runPolePlacementControl() {
     x4 = (x3 - x2) / (controlInterval / 1000.0); // Estimate angular velocity
 
     // Control Logic
-    u = -(K[0] * x1 + K[1] * x2 + K[2] * x3 + K[3] * x4); // Compute control input
+    u = (K[0] * x1 + K[1] * x2 + K[2] * x3 + K[3] * x4); // Compute control input
     applyControl(u);
   }
 }
 
-// Apply control input to the motor
+// Apply Control Input
 void applyControl(double u) {
-  if (u > 0) {
-    stepper.setSpeed(constrain(u, 0, maxSpeed));
-  } else {
-    stepper.setSpeed(constrain(u, -maxSpeed, 0));
-  }
-  stepper.runSpeed();
+  stepper.setSpeed(constrain(4*u, -maxSpeed, maxSpeed));
 }
