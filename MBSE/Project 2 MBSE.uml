@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks" xmlns:ConstraintBlocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks" xmlns:DeprecatedElements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//constraintblocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//deprecatedelements">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks" xmlns:ConstraintBlocks="http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks" xmlns:DeprecatedElements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements" xmlns:Requirements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//blocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/ConstraintBlocks http://www.eclipse.org/papyrus/sysml/1.6/SysML#//constraintblocks http://www.eclipse.org/papyrus/sysml/1.6/SysML/DeprecatedElements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//deprecatedelements http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//requirements">
   <uml:Model xmi:id="_tw-ZMKXTEe-jX-0_OLz1Iw" name="Project 2 MBSE">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_tyussKXTEe-jX-0_OLz1Iw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -7,13 +7,71 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_ty0zUKXTEe-jX-0_OLz1Iw">
       <importedPackage xmi:type="uml:Package" href="pathmap://SysML16_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Activity" xmi:id="_6rZBMKXTEe-jX-0_OLz1Iw" name="Activity14"/>
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_-pDJkKXTEe-jX-0_OLz1Iw" name="Interaction15"/>
-    <packagedElement xmi:type="uml:StateMachine" xmi:id="_CtfPYKXUEe-jX-0_OLz1Iw" name="StateMachine16">
-      <region xmi:type="uml:Region" xmi:id="_DfvLsKXUEe-jX-0_OLz1Iw" name="Region1"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_6rZBMKXTEe-jX-0_OLz1Iw" name="Activity Diagram" node="_wNvdIKYAEe-Vyf2mYXu1nw _jMLugKYEEe-Vyf2mYXu1nw _jVKrYKYEEe-Vyf2mYXu1nw _jbZ2QKYEEe-Vyf2mYXu1nw _jh-YUKYEEe-Vyf2mYXu1nw _rRaTwKYFEe-Vyf2mYXu1nw _1M4eYKYFEe-Vyf2mYXu1nw _6BkVYKYFEe-Vyf2mYXu1nw _773e4KYFEe-Vyf2mYXu1nw _FWWcUKYGEe-Vyf2mYXu1nw _NrT8IKYGEe-Vyf2mYXu1nw _RdsooKYGEe-Vyf2mYXu1nw _gtho0KYGEe-Vyf2mYXu1nw _jYrAcKYGEe-Vyf2mYXu1nw _z-HvwKYGEe-Vyf2mYXu1nw _mBvpkKYIEe-Vyf2mYXu1nw _qOjBMKYIEe-Vyf2mYXu1nw">
+      <ownedBehavior xmi:type="uml:Activity" xmi:id="_rAI9kKYFEe-Vyf2mYXu1nw" name="Activity Diagram" node="_rAI9kaYFEe-Vyf2mYXu1nw _rAI9kqYFEe-Vyf2mYXu1nw _rAI9k6YFEe-Vyf2mYXu1nw _rAI9lKYFEe-Vyf2mYXu1nw _rAI9laYFEe-Vyf2mYXu1nw _rAI9lqYFEe-Vyf2mYXu1nw">
+        <node xmi:type="uml:InitialNode" xmi:id="_rAI9kaYFEe-Vyf2mYXu1nw" name="Start"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_rAI9kqYFEe-Vyf2mYXu1nw" name="zero cart"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_rAI9k6YFEe-Vyf2mYXu1nw" name="CopyOf_OpaqueAction2_2"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_rAI9lKYFEe-Vyf2mYXu1nw" name="send signal to controller"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_rAI9laYFEe-Vyf2mYXu1nw" name="set parameters"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="_rAI9lqYFEe-Vyf2mYXu1nw" name="read encoder signal"/>
+      </ownedBehavior>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__9s8oKYFEe-Vyf2mYXu1nw" target="_jbZ2QKYEEe-Vyf2mYXu1nw" source="_wNvdIKYAEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Adq2IKYGEe-Vyf2mYXu1nw" target="_6BkVYKYFEe-Vyf2mYXu1nw" source="_jbZ2QKYEEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_A6RSkKYGEe-Vyf2mYXu1nw" target="_1M4eYKYFEe-Vyf2mYXu1nw" source="_6BkVYKYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_C5tawKYGEe-Vyf2mYXu1nw" name="No Press" target="_6BkVYKYFEe-Vyf2mYXu1nw" source="_1M4eYKYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_VLqIIKYGEe-Vyf2mYXu1nw" name="Pressed" target="_FWWcUKYGEe-Vyf2mYXu1nw" source="_773e4KYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Wc2DMKYGEe-Vyf2mYXu1nw" target="_jVKrYKYEEe-Vyf2mYXu1nw" source="_jh-YUKYEEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_XACP0KYGEe-Vyf2mYXu1nw" target="_NrT8IKYGEe-Vyf2mYXu1nw" source="_jVKrYKYEEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Xs-1YKYGEe-Vyf2mYXu1nw" name="PID" target="_jMLugKYEEe-Vyf2mYXu1nw" source="_NrT8IKYGEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_YQ8eEKYGEe-Vyf2mYXu1nw" name="Pole Placement" target="_RdsooKYGEe-Vyf2mYXu1nw" source="_NrT8IKYGEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_f6BvUKYGEe-Vyf2mYXu1nw" target="_rRaTwKYFEe-Vyf2mYXu1nw" source="_jMLugKYEEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_gYudgKYGEe-Vyf2mYXu1nw" target="_rRaTwKYFEe-Vyf2mYXu1nw" source="_RdsooKYGEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jAzTAKYGEe-Vyf2mYXu1nw" target="_gtho0KYGEe-Vyf2mYXu1nw" source="_rRaTwKYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mmhcgKYGEe-Vyf2mYXu1nw" target="_jYrAcKYGEe-Vyf2mYXu1nw" source="_gtho0KYGEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_rEif8KYGEe-Vyf2mYXu1nw" target="_773e4KYFEe-Vyf2mYXu1nw" source="_jYrAcKYGEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UjjJ0KYHEe-Vyf2mYXu1nw" name="Pressed" target="_773e4KYFEe-Vyf2mYXu1nw" source="_1M4eYKYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_wPXUIKYIEe-Vyf2mYXu1nw" name="No Press" target="_mBvpkKYIEe-Vyf2mYXu1nw" source="_773e4KYFEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_0YuWMKYIEe-Vyf2mYXu1nw" name="Press" target="_qOjBMKYIEe-Vyf2mYXu1nw" source="_mBvpkKYIEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_03ofwKYIEe-Vyf2mYXu1nw" name="No Press" target="_jh-YUKYEEe-Vyf2mYXu1nw" source="_mBvpkKYIEe-Vyf2mYXu1nw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_I7LGkKYJEe-Vyf2mYXu1nw" target="_z-HvwKYGEe-Vyf2mYXu1nw" source="_FWWcUKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_wNvdIKYAEe-Vyf2mYXu1nw" name="Start" outgoing="__9s8oKYFEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_jMLugKYEEe-Vyf2mYXu1nw" name="Calculate PID output" incoming="_Xs-1YKYGEe-Vyf2mYXu1nw" outgoing="_f6BvUKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_jVKrYKYEEe-Vyf2mYXu1nw" name="send angle to controller" incoming="_Wc2DMKYGEe-Vyf2mYXu1nw" outgoing="_XACP0KYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_jbZ2QKYEEe-Vyf2mYXu1nw" name="set parameters" incoming="__9s8oKYFEe-Vyf2mYXu1nw" outgoing="_Adq2IKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_jh-YUKYEEe-Vyf2mYXu1nw" name="read encoder signal" incoming="_03ofwKYIEe-Vyf2mYXu1nw" outgoing="_Wc2DMKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_rRaTwKYFEe-Vyf2mYXu1nw" name="Map Control Output" incoming="_f6BvUKYGEe-Vyf2mYXu1nw _gYudgKYGEe-Vyf2mYXu1nw" outgoing="_jAzTAKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_1M4eYKYFEe-Vyf2mYXu1nw" name="Start Button State" incoming="_A6RSkKYGEe-Vyf2mYXu1nw" outgoing="_C5tawKYGEe-Vyf2mYXu1nw _UjjJ0KYHEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_6BkVYKYFEe-Vyf2mYXu1nw" name="Check for button state" incoming="_Adq2IKYGEe-Vyf2mYXu1nw _C5tawKYGEe-Vyf2mYXu1nw" outgoing="_A6RSkKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_773e4KYFEe-Vyf2mYXu1nw" name="Stop Button State" incoming="_rEif8KYGEe-Vyf2mYXu1nw _UjjJ0KYHEe-Vyf2mYXu1nw" outgoing="_VLqIIKYGEe-Vyf2mYXu1nw _wPXUIKYIEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_FWWcUKYGEe-Vyf2mYXu1nw" name="stop everything" incoming="_VLqIIKYGEe-Vyf2mYXu1nw" outgoing="_I7LGkKYJEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_NrT8IKYGEe-Vyf2mYXu1nw" name="Controller type" incoming="_XACP0KYGEe-Vyf2mYXu1nw" outgoing="_Xs-1YKYGEe-Vyf2mYXu1nw _YQ8eEKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_RdsooKYGEe-Vyf2mYXu1nw" name="Calculate desired Poles" incoming="_YQ8eEKYGEe-Vyf2mYXu1nw" outgoing="_gYudgKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_gtho0KYGEe-Vyf2mYXu1nw" name="Send control signal" incoming="_jAzTAKYGEe-Vyf2mYXu1nw" outgoing="_mmhcgKYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_jYrAcKYGEe-Vyf2mYXu1nw" name="Actuate Cart Position" incoming="_mmhcgKYGEe-Vyf2mYXu1nw" outgoing="_rEif8KYGEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:FlowFinalNode" xmi:id="_z-HvwKYGEe-Vyf2mYXu1nw" name="End" incoming="_I7LGkKYJEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_mBvpkKYIEe-Vyf2mYXu1nw" name="Limit Switch State" incoming="_wPXUIKYIEe-Vyf2mYXu1nw" outgoing="_0YuWMKYIEe-Vyf2mYXu1nw _03ofwKYIEe-Vyf2mYXu1nw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_qOjBMKYIEe-Vyf2mYXu1nw" name="Actuate cart in opposite direction" incoming="_0YuWMKYIEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="_CtfPYKXUEe-jX-0_OLz1Iw" name="Inverted Pendulum">
+      <region xmi:type="uml:Region" xmi:id="_DfvLsKXUEe-jX-0_OLz1Iw" name="Region1">
+        <transition xmi:type="uml:Transition" xmi:id="_2CHcQKYQEe-Vyf2mYXu1nw" name="Powered" source="_4hSfUKYOEe-Vyf2mYXu1nw" target="_uURRsKYOEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_3T07wKYQEe-Vyf2mYXu1nw" name="Start Button Pressed" source="_uURRsKYOEe-Vyf2mYXu1nw" target="_hsbVgKYQEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_9PGAUKYQEe-Vyf2mYXu1nw" name="Cart Actuated" source="_hsbVgKYQEe-Vyf2mYXu1nw" target="_lknZ8KYOEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_AH1IAKYREe-Vyf2mYXu1nw" name="Disturbance" source="_lknZ8KYOEe-Vyf2mYXu1nw" target="_qahY8KYOEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_CZpZoKYREe-Vyf2mYXu1nw" name="Cart Actuated" source="_qahY8KYOEe-Vyf2mYXu1nw" target="_lknZ8KYOEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_G4T9UKYREe-Vyf2mYXu1nw" source="_lknZ8KYOEe-Vyf2mYXu1nw" target="_hsbVgKYQEe-Vyf2mYXu1nw"/>
+        <transition xmi:type="uml:Transition" xmi:id="_Knm5kKYREe-Vyf2mYXu1nw" name="Stop Button Pressed" source="_hsbVgKYQEe-Vyf2mYXu1nw" target="_ZQ5JEKYPEe-Vyf2mYXu1nw"/>
+        <subvertex xmi:type="uml:State" xmi:id="_lknZ8KYOEe-Vyf2mYXu1nw" name="Balanced"/>
+        <subvertex xmi:type="uml:State" xmi:id="_qahY8KYOEe-Vyf2mYXu1nw" name="Unstable"/>
+        <subvertex xmi:type="uml:State" xmi:id="_uURRsKYOEe-Vyf2mYXu1nw" name="Off"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_4hSfUKYOEe-Vyf2mYXu1nw" name="Start"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_ZQ5JEKYPEe-Vyf2mYXu1nw" name="Stop"/>
+        <subvertex xmi:type="uml:State" xmi:id="_hsbVgKYQEe-Vyf2mYXu1nw" name="Idle"/>
+      </region>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_UbN98KXrEe-Vyf2mYXu1nw" name="BDD">
-      <packagedElement xmi:type="uml:Class" xmi:id="_bnhEAKXUEe-jX-0_OLz1Iw" name="Inverted Pendulum on a Cart">
+      <packagedElement xmi:type="uml:Class" xmi:id="_bnhEAKXUEe-jX-0_OLz1Iw" name="Inverted Pendulum on a Cart" classifierBehavior="_fZ8BYKYDEe-Vyf2mYXu1nw">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_3CpuAKXVEe-jX-0_OLz1Iw" name="pendulum" type="_oCbFgKXUEe-jX-0_OLz1Iw" aggregation="composite" association="_3Cof4KXVEe-jX-0_OLz1Iw">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3CpuAaXVEe-jX-0_OLz1Iw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3CpuAqXVEe-jX-0_OLz1Iw" value="1"/>
@@ -107,6 +165,7 @@
           <end xmi:type="uml:ConnectorEnd" xmi:id="_rq_TYKXvEe-Vyf2mYXu1nw" partWithPort="_INPIsKXsEe-Vyf2mYXu1nw" role="_2py2MKXiEe-jX-0_OLz1Iw"/>
           <end xmi:type="uml:ConnectorEnd" xmi:id="_rq_TYaXvEe-Vyf2mYXu1nw" role="_usFfIKXqEe-Vyf2mYXu1nw"/>
         </ownedConnector>
+        <ownedBehavior xmi:type="uml:Interaction" xmi:id="_fZ8BYKYDEe-Vyf2mYXu1nw" name="Interaction31"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_oCbFgKXUEe-jX-0_OLz1Iw" name="Pendulum">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_6_McEqXVEe-jX-0_OLz1Iw" name="pendulum mass" type="_xsTJ0KXUEe-jX-0_OLz1Iw" aggregation="composite" association="_6_L1AKXVEe-jX-0_OLz1Iw">
@@ -366,6 +425,281 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H6yqoaXoEe-jX-0_OLz1Iw" value="1"/>
         </ownedAttribute>
       </packagedElement>
+      <packagedElement xmi:type="uml:Interaction" xmi:id="_p5ctMKYDEe-Vyf2mYXu1nw" name="Inverted Pendulum Interactions">
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_2rnYIKYDEe-Vyf2mYXu1nw" name="External Force" coveredBy="_pg_UcKYEEe-Vyf2mYXu1nw _reDeEKYEEe-Vyf2mYXu1nw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_6tt7oKYDEe-Vyf2mYXu1nw" name="Cart" coveredBy="_pg_UcaYEEe-Vyf2mYXu1nw __zRDsKYEEe-Vyf2mYXu1nw __zS44KYEEe-Vyf2mYXu1nw _taO24KYEEe-Vyf2mYXu1nw _5tTLAaYEEe-Vyf2mYXu1nw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_8qvB8KYDEe-Vyf2mYXu1nw" name="Pendulum" coveredBy="_reDeEaYEEe-Vyf2mYXu1nw __zRDsKYEEe-Vyf2mYXu1nw __zS44KYEEe-Vyf2mYXu1nw _w1WS4KYEEe-Vyf2mYXu1nw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_9krhsKYDEe-Vyf2mYXu1nw" name="Sensor" coveredBy="__zRDsKYEEe-Vyf2mYXu1nw __zS44KYEEe-Vyf2mYXu1nw _taPd8KYEEe-Vyf2mYXu1nw _w1WS4aYEEe-Vyf2mYXu1nw _zlSq8KYEEe-Vyf2mYXu1nw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="__mm9MKYDEe-Vyf2mYXu1nw" name="Controller" coveredBy="__zRDsKYEEe-Vyf2mYXu1nw __zS44KYEEe-Vyf2mYXu1nw _zlTSAKYEEe-Vyf2mYXu1nw _3_uO4KYEEe-Vyf2mYXu1nw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_AceOMKYEEe-Vyf2mYXu1nw" name="Actuator" coveredBy="__zRDsKYEEe-Vyf2mYXu1nw __zS44KYEEe-Vyf2mYXu1nw _3_uO4aYEEe-Vyf2mYXu1nw _5tTLAKYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pg_UcKYEEe-Vyf2mYXu1nw" name="Message7SendEvent" covered="_2rnYIKYDEe-Vyf2mYXu1nw" message="_pg4mwKYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pg_UcaYEEe-Vyf2mYXu1nw" name="Message7ReceiveEvent" covered="_6tt7oKYDEe-Vyf2mYXu1nw" message="_pg4mwKYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_reDeEKYEEe-Vyf2mYXu1nw" name="Message10SendEvent" covered="_2rnYIKYDEe-Vyf2mYXu1nw" message="_reC3AKYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_reDeEaYEEe-Vyf2mYXu1nw" name="Message10ReceiveEvent" covered="_8qvB8KYDEe-Vyf2mYXu1nw" message="_reC3AKYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:CombinedFragment" xmi:id="__zRDsKYEEe-Vyf2mYXu1nw" name="Control Loop" covered="_6tt7oKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _9krhsKYDEe-Vyf2mYXu1nw" interactionOperator="loop">
+          <operand xmi:type="uml:InteractionOperand" xmi:id="__zS44KYEEe-Vyf2mYXu1nw" name="InteractionOperand0" covered="_6tt7oKYDEe-Vyf2mYXu1nw __mm9MKYDEe-Vyf2mYXu1nw _8qvB8KYDEe-Vyf2mYXu1nw _AceOMKYEEe-Vyf2mYXu1nw _9krhsKYDEe-Vyf2mYXu1nw">
+            <guard xmi:type="uml:InteractionConstraint" xmi:id="__zS44aYEEe-Vyf2mYXu1nw" name="guard"/>
+          </operand>
+        </fragment>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_taO24KYEEe-Vyf2mYXu1nw" name="Message13SendEvent" covered="_6tt7oKYDEe-Vyf2mYXu1nw" message="_taOP0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_taPd8KYEEe-Vyf2mYXu1nw" name="Message13ReceiveEvent" covered="_9krhsKYDEe-Vyf2mYXu1nw" message="_taOP0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_w1WS4KYEEe-Vyf2mYXu1nw" name="Message16SendEvent" covered="_8qvB8KYDEe-Vyf2mYXu1nw" message="_w1Vr0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_w1WS4aYEEe-Vyf2mYXu1nw" name="Message16ReceiveEvent" covered="_9krhsKYDEe-Vyf2mYXu1nw" message="_w1Vr0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zlSq8KYEEe-Vyf2mYXu1nw" name="Message19SendEvent" covered="_9krhsKYDEe-Vyf2mYXu1nw" message="_zlSD4KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zlTSAKYEEe-Vyf2mYXu1nw" name="Message19ReceiveEvent" covered="__mm9MKYDEe-Vyf2mYXu1nw" message="_zlSD4KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3_uO4KYEEe-Vyf2mYXu1nw" name="Message22SendEvent" covered="__mm9MKYDEe-Vyf2mYXu1nw" message="_3_tn0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3_uO4aYEEe-Vyf2mYXu1nw" name="Message22ReceiveEvent" covered="_AceOMKYEEe-Vyf2mYXu1nw" message="_3_tn0KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5tTLAKYEEe-Vyf2mYXu1nw" name="Message25SendEvent" covered="_AceOMKYEEe-Vyf2mYXu1nw" message="_5tSj8KYEEe-Vyf2mYXu1nw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5tTLAaYEEe-Vyf2mYXu1nw" name="Message25ReceiveEvent" covered="_6tt7oKYDEe-Vyf2mYXu1nw" message="_5tSj8KYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_pg4mwKYEEe-Vyf2mYXu1nw" name="disturbance()" messageSort="asynchCall" receiveEvent="_pg_UcaYEEe-Vyf2mYXu1nw" sendEvent="_pg_UcKYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_reC3AKYEEe-Vyf2mYXu1nw" name="gravity()" messageSort="asynchCall" receiveEvent="_reDeEaYEEe-Vyf2mYXu1nw" sendEvent="_reDeEKYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_taOP0KYEEe-Vyf2mYXu1nw" name="measure_cart_position()" messageSort="asynchCall" receiveEvent="_taPd8KYEEe-Vyf2mYXu1nw" sendEvent="_taO24KYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_w1Vr0KYEEe-Vyf2mYXu1nw" name="measure_pend_angle()" messageSort="asynchCall" receiveEvent="_w1WS4aYEEe-Vyf2mYXu1nw" sendEvent="_w1WS4KYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_zlSD4KYEEe-Vyf2mYXu1nw" name="send_signal()" messageSort="asynchCall" receiveEvent="_zlTSAKYEEe-Vyf2mYXu1nw" sendEvent="_zlSq8KYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_3_tn0KYEEe-Vyf2mYXu1nw" name="send_control()" messageSort="asynchCall" receiveEvent="_3_uO4aYEEe-Vyf2mYXu1nw" sendEvent="_3_uO4KYEEe-Vyf2mYXu1nw"/>
+        <message xmi:type="uml:Message" xmi:id="_5tSj8KYEEe-Vyf2mYXu1nw" name="apply_control()" messageSort="asynchCall" receiveEvent="_5tTLAaYEEe-Vyf2mYXu1nw" sendEvent="_5tTLAKYEEe-Vyf2mYXu1nw"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_L33TcKYEEe-Vyf2mYXu1nw" name="Inverted Pendulum on a Cart" useCase="_mTWhgKYJEe-Vyf2mYXu1nw _oOupEKYJEe-Vyf2mYXu1nw _tAdSsKYJEe-Vyf2mYXu1nw _xKzzQKYJEe-Vyf2mYXu1nw _x4VnoKYJEe-Vyf2mYXu1nw _5nnngKYJEe-Vyf2mYXu1nw _8RBSsKYJEe-Vyf2mYXu1nw __IZ6EKYKEe-Vyf2mYXu1nw">
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mTWhgKYJEe-Vyf2mYXu1nw" name="Start Button Pressed" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_n6fecKYJEe-Vyf2mYXu1nw" name="CopyOf_Start Button Pressed_26"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_oOupEKYJEe-Vyf2mYXu1nw" name="Stop Button Pressed" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_tAdSsKYJEe-Vyf2mYXu1nw" name="Apply Disturbance" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_xKzzQKYJEe-Vyf2mYXu1nw" name="Cart position" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_x4VnoKYJEe-Vyf2mYXu1nw" name="Pendulum angle" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5nnngKYJEe-Vyf2mYXu1nw" name="Calculate control output" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_8RBSsKYJEe-Vyf2mYXu1nw" name="Move Cart" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="__IZ6EKYKEe-Vyf2mYXu1nw" name="Limit Switch" subject="_L33TcKYEEe-Vyf2mYXu1nw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TcaYEEe-Vyf2mYXu1nw" name="pendulum" type="_oCbFgKXUEe-jX-0_OLz1Iw" aggregation="composite" association="_L4FV4KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33TcqYEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33Tc6YEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TdKYEEe-Vyf2mYXu1nw" name="controller" type="_o3FcoKXUEe-jX-0_OLz1Iw" aggregation="composite" association="_L4FV5KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33TdaYEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33TdqYEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33Td6YEEe-Vyf2mYXu1nw" name="sensors" type="_pjVeoKXUEe-jX-0_OLz1Iw" aggregation="composite" association="_L4Eu0KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33TeKYEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33TeaYEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TeqYEEe-Vyf2mYXu1nw" name="actuator" type="_ACa60KXVEe-jX-0_OLz1Iw" aggregation="composite" association="_L4Eu1KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33Te6YEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33TfKYEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TfaYEEe-Vyf2mYXu1nw" name="external force" type="_qOmCIKXUEe-jX-0_OLz1Iw" aggregation="composite" association="_L4Eu2KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33TfqYEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33Tf6YEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TgKYEEe-Vyf2mYXu1nw" name="cart" type="_hnegsKXnEe-jX-0_OLz1Iw" aggregation="composite" association="_L4FV6KYEEe-Vyf2mYXu1nw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L33TgaYEEe-Vyf2mYXu1nw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L33TgqYEEe-Vyf2mYXu1nw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_L33Tg6YEEe-Vyf2mYXu1nw" name="External Force" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_L33ThKYEEe-Vyf2mYXu1nw" name="Control" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33ThaYEEe-Vyf2mYXu1nw" name="pendulum0" type="_oCbFgKXUEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33ThqYEEe-Vyf2mYXu1nw" name="controller0" type="_o3FcoKXUEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33Th6YEEe-Vyf2mYXu1nw" name="sensors0" type="_pjVeoKXUEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TiKYEEe-Vyf2mYXu1nw" name="external Force" type="_qOmCIKXUEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TiaYEEe-Vyf2mYXu1nw" name="actuator0" type="_ACa60KXVEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L33TiqYEEe-Vyf2mYXu1nw" name="cart0" type="_hnegsKXnEe-jX-0_OLz1Iw"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_L33Ti6YEEe-Vyf2mYXu1nw" name="State" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TjKYEEe-Vyf2mYXu1nw" name="Connector16">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TjaYEEe-Vyf2mYXu1nw" role="_L33Tg6YEEe-Vyf2mYXu1nw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TjqYEEe-Vyf2mYXu1nw" partWithPort="_L33TiKYEEe-Vyf2mYXu1nw" role="_9T4IkKXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33Tj6YEEe-Vyf2mYXu1nw" name="BindingConnector17">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TkKYEEe-Vyf2mYXu1nw" partWithPort="_L33TiKYEEe-Vyf2mYXu1nw" role="_8Nvm8KXiEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TkaYEEe-Vyf2mYXu1nw" role="_L33Tg6YEEe-Vyf2mYXu1nw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TkqYEEe-Vyf2mYXu1nw" name="Connector18">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33Tk6YEEe-Vyf2mYXu1nw" role="_L33Ti6YEEe-Vyf2mYXu1nw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TlKYEEe-Vyf2mYXu1nw" partWithPort="_L33TiqYEEe-Vyf2mYXu1nw" role="_3A8_sKXnEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TlaYEEe-Vyf2mYXu1nw" name="BindingConnector19">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TlqYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_T6jZgKXuEe-Vyf2mYXu1nw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33Tl6YEEe-Vyf2mYXu1nw" partWithPort="_L33TiqYEEe-Vyf2mYXu1nw" role="_p0T_QKXnEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TmKYEEe-Vyf2mYXu1nw" name="BindingConnector20">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TmaYEEe-Vyf2mYXu1nw" partWithPort="_L33TiqYEEe-Vyf2mYXu1nw" role="_mnv8oKXnEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TmqYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_oOvh4KXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33Tm6YEEe-Vyf2mYXu1nw" name="BindingConnector21">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TnKYEEe-Vyf2mYXu1nw" partWithPort="_L33TiqYEEe-Vyf2mYXu1nw" role="_oJe1IKXnEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TnaYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_qTC78KXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TnqYEEe-Vyf2mYXu1nw" name="BindingConnector22">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33Tn6YEEe-Vyf2mYXu1nw" partWithPort="_L33TiqYEEe-Vyf2mYXu1nw" role="_pDC6YKXnEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33ToKYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_rr0swKXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33ToaYEEe-Vyf2mYXu1nw" name="BindingConnector23">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33ToqYEEe-Vyf2mYXu1nw" partWithPort="_L33ThaYEEe-Vyf2mYXu1nw" role="_DgB-QKXiEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33To6YEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_szVHYKXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33TpKYEEe-Vyf2mYXu1nw" name="BindingConnector24">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TpaYEEe-Vyf2mYXu1nw" partWithPort="_L33ThaYEEe-Vyf2mYXu1nw" role="_a3_jMKXiEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TpqYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_tzI-kKXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_L33Tp6YEEe-Vyf2mYXu1nw" name="BindingConnector25">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TqKYEEe-Vyf2mYXu1nw" partWithPort="_L33ThaYEEe-Vyf2mYXu1nw" role="_c96t4KXiEe-jX-0_OLz1Iw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_L33TqaYEEe-Vyf2mYXu1nw" partWithPort="_L33Th6YEEe-Vyf2mYXu1nw" role="_u8Rw4KXiEe-jX-0_OLz1Iw"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4Eu0KYEEe-Vyf2mYXu1nw" memberEnd="_L4Eu06YEEe-Vyf2mYXu1nw _L33Td6YEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4Eu0aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4Eu0qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4Eu06YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4Eu0KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4Eu1KYEEe-Vyf2mYXu1nw" memberEnd="_L4Eu16YEEe-Vyf2mYXu1nw _L33TeqYEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4Eu1aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4Eu1qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4Eu16YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4Eu1KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4Eu2KYEEe-Vyf2mYXu1nw" memberEnd="_L4Eu26YEEe-Vyf2mYXu1nw _L33TfaYEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4Eu2aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4Eu2qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4Eu26YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4Eu2KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4FV4KYEEe-Vyf2mYXu1nw" memberEnd="_L4FV46YEEe-Vyf2mYXu1nw _L33TcaYEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4FV4aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4FV4qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4FV46YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4FV4KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4FV5KYEEe-Vyf2mYXu1nw" memberEnd="_L4FV56YEEe-Vyf2mYXu1nw _L33TdKYEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4FV5aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4FV5qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4FV56YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4FV5KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L4FV6KYEEe-Vyf2mYXu1nw" memberEnd="_L4FV66YEEe-Vyf2mYXu1nw _L33TgKYEEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L4FV6aYEEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L4FV6qYEEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L4FV66YEEe-Vyf2mYXu1nw" name="inverted pendulum on a cart" type="_L33TcKYEEe-Vyf2mYXu1nw" association="_L4FV6KYEEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_XIBm0KYJEe-Vyf2mYXu1nw" name="User"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_ZGgswKYJEe-Vyf2mYXu1nw" name="Controller"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_aV_XoKYJEe-Vyf2mYXu1nw" name="Sensor"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_z8ZxIKYJEe-Vyf2mYXu1nw" name="Actuator"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ezkgwKYKEe-Vyf2mYXu1nw" memberEnd="_ezlu4KYKEe-Vyf2mYXu1nw _ezlu4aYKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ezlH0KYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ezlH0aYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ezlu4KYKEe-Vyf2mYXu1nw" name="user" type="_XIBm0KYJEe-Vyf2mYXu1nw" association="_ezkgwKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ezlu4aYKEe-Vyf2mYXu1nw" name="start button pressed" type="_mTWhgKYJEe-Vyf2mYXu1nw" association="_ezkgwKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fW7sgKYKEe-Vyf2mYXu1nw" memberEnd="_fW8TkqYKEe-Vyf2mYXu1nw _fW86oKYKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fW8TkKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fW8TkaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fW8TkqYKEe-Vyf2mYXu1nw" name="user" type="_XIBm0KYJEe-Vyf2mYXu1nw" association="_fW7sgKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fW86oKYKEe-Vyf2mYXu1nw" name="stop button pressed" type="_oOupEKYJEe-Vyf2mYXu1nw" association="_fW7sgKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_f8bmQKYKEe-Vyf2mYXu1nw" memberEnd="_f8cNUaYKEe-Vyf2mYXu1nw _f8cNUqYKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_f8bmQaYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_f8cNUKYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_f8cNUaYKEe-Vyf2mYXu1nw" name="calculate control output" type="_5nnngKYJEe-Vyf2mYXu1nw" association="_f8bmQKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_f8cNUqYKEe-Vyf2mYXu1nw" name="controller" type="_ZGgswKYJEe-Vyf2mYXu1nw" association="_f8bmQKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_g1acsKYKEe-Vyf2mYXu1nw" memberEnd="_g1bDwqYKEe-Vyf2mYXu1nw _g1bDw6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g1bDwKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g1bDwaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_g1bDwqYKEe-Vyf2mYXu1nw" name="controller" type="_ZGgswKYJEe-Vyf2mYXu1nw" association="_g1acsKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_g1bDw6YKEe-Vyf2mYXu1nw" name="pendulum angle" type="_x4VnoKYJEe-Vyf2mYXu1nw" association="_g1acsKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hSYFgKYKEe-Vyf2mYXu1nw" memberEnd="_hSYskqYKEe-Vyf2mYXu1nw _hSYsk6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hSYskKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hSYskaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_hSYskqYKEe-Vyf2mYXu1nw" name="controller" type="_ZGgswKYJEe-Vyf2mYXu1nw" association="_hSYFgKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_hSYsk6YKEe-Vyf2mYXu1nw" name="cart position" type="_xKzzQKYJEe-Vyf2mYXu1nw" association="_hSYFgKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_llfggKYKEe-Vyf2mYXu1nw" memberEnd="_llgHkqYKEe-Vyf2mYXu1nw _llgHk6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_llgHkKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_llgHkaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_llgHkqYKEe-Vyf2mYXu1nw" name="apply disturbance" type="_tAdSsKYJEe-Vyf2mYXu1nw" association="_llfggKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_llgHk6YKEe-Vyf2mYXu1nw" name="user" type="_XIBm0KYJEe-Vyf2mYXu1nw" association="_llfggKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qXoZ0KYKEe-Vyf2mYXu1nw" memberEnd="_qXpA4qYKEe-Vyf2mYXu1nw _qXpA46YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qXpA4KYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qXpA4aYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qXpA4qYKEe-Vyf2mYXu1nw" name="sensor" type="_aV_XoKYJEe-Vyf2mYXu1nw" association="_qXoZ0KYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qXpA46YKEe-Vyf2mYXu1nw" name="cart position" type="_xKzzQKYJEe-Vyf2mYXu1nw" association="_qXoZ0KYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qxwKAKYKEe-Vyf2mYXu1nw" memberEnd="_qxwxEqYKEe-Vyf2mYXu1nw _qxwxE6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qxwxEKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qxwxEaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qxwxEqYKEe-Vyf2mYXu1nw" name="sensor" type="_aV_XoKYJEe-Vyf2mYXu1nw" association="_qxwKAKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qxwxE6YKEe-Vyf2mYXu1nw" name="pendulum angle" type="_x4VnoKYJEe-Vyf2mYXu1nw" association="_qxwKAKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_rz15IKYKEe-Vyf2mYXu1nw" memberEnd="_rz2gMqYKEe-Vyf2mYXu1nw _rz2gM6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rz2gMKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rz2gMaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_rz2gMqYKEe-Vyf2mYXu1nw" name="actuator" type="_z8ZxIKYJEe-Vyf2mYXu1nw" association="_rz15IKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_rz2gM6YKEe-Vyf2mYXu1nw" name="control cart" type="_8RBSsKYJEe-Vyf2mYXu1nw" association="_rz15IKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_wupmQKYKEe-Vyf2mYXu1nw" memberEnd="_wuq0YKYKEe-Vyf2mYXu1nw _wuq0YaYKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wuqNUKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wuqNUaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_wuq0YKYKEe-Vyf2mYXu1nw" name="sensor" type="_aV_XoKYJEe-Vyf2mYXu1nw" association="_wupmQKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_wuq0YaYKEe-Vyf2mYXu1nw" name="start button pressed" type="_mTWhgKYJEe-Vyf2mYXu1nw" association="_wupmQKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xQyqAKYKEe-Vyf2mYXu1nw" memberEnd="_xQzREqYKEe-Vyf2mYXu1nw _xQzRE6YKEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xQzREKYKEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xQzREaYKEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xQzREqYKEe-Vyf2mYXu1nw" name="sensor" type="_aV_XoKYJEe-Vyf2mYXu1nw" association="_xQyqAKYKEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xQzRE6YKEe-Vyf2mYXu1nw" name="stop button pressed" type="_oOupEKYJEe-Vyf2mYXu1nw" association="_xQyqAKYKEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BIQR8KYLEe-Vyf2mYXu1nw" memberEnd="_BIQ5AqYLEe-Vyf2mYXu1nw _BIQ5A6YLEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BIQ5AKYLEe-Vyf2mYXu1nw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BIQ5AaYLEe-Vyf2mYXu1nw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_BIQ5AqYLEe-Vyf2mYXu1nw" name="sensor" type="_aV_XoKYJEe-Vyf2mYXu1nw" association="_BIQR8KYLEe-Vyf2mYXu1nw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_BIQ5A6YLEe-Vyf2mYXu1nw" name="limit switch" type="__IZ6EKYKEe-Vyf2mYXu1nw" association="_BIQR8KYLEe-Vyf2mYXu1nw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_U09GEKYLEe-Vyf2mYXu1nw" name="&lt;include>" client="_5nnngKYJEe-Vyf2mYXu1nw" supplier="_8RBSsKYJEe-Vyf2mYXu1nw"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_Xi8WUKYLEe-Vyf2mYXu1nw" name="&lt;include>" client="__IZ6EKYKEe-Vyf2mYXu1nw" supplier="_8RBSsKYJEe-Vyf2mYXu1nw"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_egc7AKYLEe-Vyf2mYXu1nw" name="&lt;include>" client="_tAdSsKYJEe-Vyf2mYXu1nw" supplier="_xKzzQKYJEe-Vyf2mYXu1nw"/>
+    <packagedElement xmi:type="uml:Model" xmi:id="_TjlvYKYMEe-Vyf2mYXu1nw" name="Inverted Pendulum">
+      <packagedElement xmi:type="uml:Package" xmi:id="_Y-BXwKYMEe-Vyf2mYXu1nw" name="Requirements">
+        <packagedElement xmi:type="uml:Package" xmi:id="_l79YYKYNEe-Vyf2mYXu1nw" name="Constraints"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_hPPAAKYMEe-Vyf2mYXu1nw" name="Behavioural Models">
+        <packagedElement xmi:type="uml:Package" xmi:id="_sBWCQKYNEe-Vyf2mYXu1nw" name="Use Case Diagram"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_uHqOgKYNEe-Vyf2mYXu1nw" name="Activity Diagram"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_x0cpUKYNEe-Vyf2mYXu1nw" name="Sequence Diagram"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_15qLMKYNEe-Vyf2mYXu1nw" name="State Machine Diagram"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_LV_mYKYNEe-Vyf2mYXu1nw" name="Structural Models">
+        <packagedElement xmi:type="uml:Package" xmi:id="_dYGg8KYNEe-Vyf2mYXu1nw" name="BDD"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_eZGq8KYNEe-Vyf2mYXu1nw" name="IBD"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_nZmeQKYREe-Vyf2mYXu1nw" name="Requirements">
+      <packagedElement xmi:type="uml:Class" xmi:id="_pW0Y4KYREe-Vyf2mYXu1nw" name="Balance Pendulum"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_shHxsKYREe-Vyf2mYXu1nw" name="Output State"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_uNo94KYREe-Vyf2mYXu1nw" name="Performance"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vuSRQKYREe-Vyf2mYXu1nw" name="Constraints"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_aTa1sKYSEe-Vyf2mYXu1nw" name="Control Cart"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vJCZsKYSEe-Vyf2mYXu1nw" name="Constraints"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MakaEKYTEe-Vyf2mYXu1nw" name="Inverted Pendulum Control"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_F5KtIKYUEe-Vyf2mYXu1nw" name="Refine" client="_aTa1sKYSEe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_IUxM4KYUEe-Vyf2mYXu1nw" name="Refine" client="_pW0Y4KYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_LGSSQKYUEe-Vyf2mYXu1nw" name="Refine" client="_vuSRQKYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_LtuFsKYUEe-Vyf2mYXu1nw" name="Refine" client="_vJCZsKYSEe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_NoTjEKYUEe-Vyf2mYXu1nw" name="Refine" client="_shHxsKYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_OJQ7EKYUEe-Vyf2mYXu1nw" name="Refine" client="_uNo94KYREe-Vyf2mYXu1nw" supplier="_MakaEKYTEe-Vyf2mYXu1nw"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_txbsMKXTEe-jX-0_OLz1Iw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_txdhYKXTEe-jX-0_OLz1Iw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -426,6 +760,12 @@
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_2uvuMKYPEe-Vyf2mYXu1nw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2uz_oKYPEe-Vyf2mYXu1nw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
     </profileApplication>
   </uml:Model>
   <Blocks:Block xmi:id="_bnkuYKXUEe-jX-0_OLz1Iw" base_Class="_bnhEAKXUEe-jX-0_OLz1Iw"/>
@@ -513,4 +853,37 @@
   <Blocks:BindingConnector xmi:id="_rKNhkKXvEe-Vyf2mYXu1nw" base_Connector="_rKLsYKXvEe-Vyf2mYXu1nw"/>
   <Blocks:NestedConnectorEnd xmi:id="_rq_TYqXvEe-Vyf2mYXu1nw" base_Element="_rq_TYKXvEe-Vyf2mYXu1nw" propertyPath="_INPIsKXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_rq_TYKXvEe-Vyf2mYXu1nw"/>
   <Blocks:BindingConnector xmi:id="_rq_6cKXvEe-Vyf2mYXu1nw" base_Connector="_rq-FQKXvEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L39aEKYEEe-Vyf2mYXu1nw" base_Element="_L33ToKYEEe-Vyf2mYXu1nw" propertyPath="_5nnjIKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33ToKYEEe-Vyf2mYXu1nw"/>
+  <Blocks:BindingConnector xmi:id="_L3-BIKYEEe-Vyf2mYXu1nw" base_Connector="_L33Tm6YEEe-Vyf2mYXu1nw"/>
+  <Blocks:BindingConnector xmi:id="_L3-oMKYEEe-Vyf2mYXu1nw" base_Connector="_L33TlaYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L3-oMaYEEe-Vyf2mYXu1nw" base_Element="_L33TnKYEEe-Vyf2mYXu1nw" propertyPath="_MULv8KXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TnKYEEe-Vyf2mYXu1nw"/>
+  <DeprecatedElements:FlowPort xmi:id="_L3_PQKYEEe-Vyf2mYXu1nw" base_Port="_L33ThKYEEe-Vyf2mYXu1nw" direction="in"/>
+  <DeprecatedElements:FlowPort xmi:id="_L3_PQaYEEe-Vyf2mYXu1nw" base_Port="_L33Ti6YEEe-Vyf2mYXu1nw" direction="out"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L3_2UKYEEe-Vyf2mYXu1nw" base_Element="_L33TnaYEEe-Vyf2mYXu1nw" propertyPath="_5nnjIKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TnaYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L3_2UaYEEe-Vyf2mYXu1nw" base_Element="_L33TjqYEEe-Vyf2mYXu1nw" propertyPath="_9WxVcKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TjqYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4AdYKYEEe-Vyf2mYXu1nw" base_Element="_L33Tn6YEEe-Vyf2mYXu1nw" propertyPath="_MULv8KXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33Tn6YEEe-Vyf2mYXu1nw"/>
+  <Blocks:BindingConnector xmi:id="_L4BEcKYEEe-Vyf2mYXu1nw" base_Connector="_L33TmKYEEe-Vyf2mYXu1nw"/>
+  <Blocks:Block xmi:id="_L4BEcaYEEe-Vyf2mYXu1nw" base_Class="_L33TcKYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4BEcqYEEe-Vyf2mYXu1nw" base_Element="_L33TlqYEEe-Vyf2mYXu1nw" propertyPath="_5nnjIKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TlqYEEe-Vyf2mYXu1nw"/>
+  <Blocks:BindingConnector xmi:id="_L4BrgKYEEe-Vyf2mYXu1nw" base_Connector="_L33TnqYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4BrgaYEEe-Vyf2mYXu1nw" base_Element="_L33TlKYEEe-Vyf2mYXu1nw" propertyPath="_MULv8KXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TlKYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4CSkKYEEe-Vyf2mYXu1nw" base_Element="_L33Tl6YEEe-Vyf2mYXu1nw" propertyPath="_MULv8KXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33Tl6YEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4CSkaYEEe-Vyf2mYXu1nw" base_Element="_L33TkKYEEe-Vyf2mYXu1nw" propertyPath="_9WxVcKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TkKYEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4C5oKYEEe-Vyf2mYXu1nw" base_Element="_L33TmaYEEe-Vyf2mYXu1nw" propertyPath="_MULv8KXsEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TmaYEEe-Vyf2mYXu1nw"/>
+  <Blocks:BindingConnector xmi:id="_L4DgsKYEEe-Vyf2mYXu1nw" base_Connector="_L33Tj6YEEe-Vyf2mYXu1nw"/>
+  <Blocks:NestedConnectorEnd xmi:id="_L4DgsaYEEe-Vyf2mYXu1nw" base_Element="_L33TmqYEEe-Vyf2mYXu1nw" propertyPath="_5nnjIKXrEe-Vyf2mYXu1nw" base_ConnectorEnd="_L33TmqYEEe-Vyf2mYXu1nw"/>
+  <DeprecatedElements:FlowPort xmi:id="_L4EHwKYEEe-Vyf2mYXu1nw" base_Port="_L33Tg6YEEe-Vyf2mYXu1nw" direction="in"/>
+  <Requirements:Requirement xmi:id="_pW9i0KYREe-Vyf2mYXu1nw" base_NamedElement="_pW0Y4KYREe-Vyf2mYXu1nw" id="R1" text="Balance pendulum upright" base_Class="_pW0Y4KYREe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_shKN8KYREe-Vyf2mYXu1nw" base_NamedElement="_shHxsKYREe-Vyf2mYXu1nw" id="R3" text="Indicate the system state with LED lights" base_Class="_shHxsKYREe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_uNraIKYREe-Vyf2mYXu1nw" base_NamedElement="_uNo94KYREe-Vyf2mYXu1nw" id="R6" text="Maintain an angle of +/- 2 degrees" base_Class="_uNo94KYREe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_vuUtgKYREe-Vyf2mYXu1nw" base_NamedElement="_vuSRQKYREe-Vyf2mYXu1nw" id="R4" text="Pendulum rod has to be 40 to 50 cm&#xD;&#xA;" base_Class="_vuSRQKYREe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_aTcq5aYSEe-Vyf2mYXu1nw" base_NamedElement="_aTa1sKYSEe-Vyf2mYXu1nw" id="R2" text="Actuate cart using stepper motor" base_Class="_aTa1sKYSEe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_vJEO4KYSEe-Vyf2mYXu1nw" base_NamedElement="_vJCZsKYSEe-Vyf2mYXu1nw" id="R5" text="Pendulum mass has to be 50g or more" base_Class="_vJCZsKYSEe-Vyf2mYXu1nw"/>
+  <Requirements:Requirement xmi:id="_MamPQKYTEe-Vyf2mYXu1nw" base_NamedElement="_MakaEKYTEe-Vyf2mYXu1nw" id="R0" text="Balance an inverted pendulum on a cart with disturbances" base_Class="_MakaEKYTEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_F5MiUKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_F5KtIKYUEe-Vyf2mYXu1nw" base_Abstraction="_F5KtIKYUEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_IUzCEKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_IUxM4KYUEe-Vyf2mYXu1nw" base_Abstraction="_IUxM4KYUEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_LGUHcKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_LGSSQKYUEe-Vyf2mYXu1nw" base_Abstraction="_LGSSQKYUEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_Ltv64KYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_LtuFsKYUEe-Vyf2mYXu1nw" base_Abstraction="_LtuFsKYUEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_NoV_UKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_NoTjEKYUEe-Vyf2mYXu1nw" base_Abstraction="_NoTjEKYUEe-Vyf2mYXu1nw"/>
+  <Requirements:Refine xmi:id="_OJSwQKYUEe-Vyf2mYXu1nw" base_DirectedRelationship="_OJQ7EKYUEe-Vyf2mYXu1nw" base_Abstraction="_OJQ7EKYUEe-Vyf2mYXu1nw"/>
 </xmi:XMI>
