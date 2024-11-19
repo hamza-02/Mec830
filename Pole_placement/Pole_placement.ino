@@ -13,17 +13,17 @@ const int encoderPinB = 3;    // Encoder pin B
 AccelStepper stepper(AccelStepper::DRIVER, pulsePin, dirPin);
 
 // Speed and Acceleration Settings
-const float maxSpeed = 1500;       // Set the desired max speed in steps per second
+const float maxSpeed = 1500;       // Max speed in steps per second
 const float acceleration = 300;    // Acceleration in steps per second^2
 
 // State Variables
-bool movingTowardsLimit1 = true;   // Track the direction of movement
-int limitSwitch1Count = 0;         // Count how many times limit switch 1 is triggered
-int limitSwitch2Count = 0;         // Count how many times limit switch 2 is triggered
-long position1 = 0;                // Position recorded at limit switch 1
-long position2 = 0;                // Position recorded at limit switch 2
-long midpoint = 0;                 // Calculated midpoint
-bool zeroInitialized = false;      // Flag for zero position initialization
+bool movingTowardsLimit1 = true;
+int limitSwitch1Count = 0;
+int limitSwitch2Count = 0;
+long position1 = 0;
+long position2 = 0;
+long midpoint = 0;
+bool zeroInitialized = false;
 
 // Encoder Setup
 Encoder encoder(encoderPinA, encoderPinB);
@@ -50,25 +50,23 @@ unsigned long lastControlTime = 0;
 const unsigned long controlInterval = 10; // Control loop interval in ms
 
 void setup() {
-   Serial.begin(9600);
-
-  // Set up stepper motor settings
+  // Stepper Motor Settings
   stepper.setMaxSpeed(maxSpeed);
   stepper.setAcceleration(acceleration);
 
-  // Configure limit switches as inputs with pull-up resistors
+  // Configure Limit Switches
   pinMode(limitSwitch1, INPUT_PULLUP);
   pinMode(limitSwitch2, INPUT_PULLUP);
 
   // Initialize Encoder
   encoder.write(0);
 
-  Serial.println("Initializing zero position...");
+  // Start moving towards the first limit switch
+  stepper.setSpeed(maxSpeed);
 }
 
 void loop() {
   if (!zeroInitialized) {
-  
     initializeZeroPosition();
   } else {
     runPolePlacementControl();
@@ -78,7 +76,6 @@ void loop() {
 // Zero Position Initialization
 void initializeZeroPosition() {
   if (digitalRead(limitSwitch1) == LOW && digitalRead(limitSwitch2) == LOW) {
-    Serial.println("Both limit switches triggered. Stopping motor.");
     stepper.setSpeed(0);
     stepper.stop();
     while (true) {
@@ -87,29 +84,22 @@ void initializeZeroPosition() {
   }
 
   if (digitalRead(limitSwitch1) == LOW && movingTowardsLimit1) {
-    Serial.println("LimitSwitch1 triggered.");
     limitSwitch1Count++;
     if (limitSwitch1Count == 3) {
       position1 = stepper.currentPosition();
-      Serial.print("Position1 recorded: ");
-      Serial.println(position1);
       if (limitSwitch2Count == 3) calculateMidpointAndMove();
     }
-    stepper.setSpeed(-maxSpeed);
-    
     movingTowardsLimit1 = false;
+    stepper.setSpeed(-maxSpeed);
     delay(200);
   } else if (digitalRead(limitSwitch2) == LOW && !movingTowardsLimit1) {
-    Serial.println("LimitSwitch2 triggered.");
     limitSwitch2Count++;
     if (limitSwitch2Count == 3) {
       position2 = stepper.currentPosition();
-      Serial.print("Position2 recorded: ");
-      Serial.println(position2);
       if (limitSwitch1Count == 3) calculateMidpointAndMove();
     }
-    stepper.setSpeed(maxSpeed);
     movingTowardsLimit1 = true;
+    stepper.setSpeed(maxSpeed);
     delay(200);
   }
 
@@ -118,16 +108,14 @@ void initializeZeroPosition() {
 
 void calculateMidpointAndMove() {
   midpoint = (position1 + position2) / 2;
-  Serial.print("Midpoint calculated: ");
-  Serial.println(midpoint);
 
   stepper.moveTo(midpoint);
   while (stepper.distanceToGo() != 0) {
     stepper.run();
   }
-  Serial.println("Midpoint reached. Zero position initialized.");
+
   zeroInitialized = true;
-  encoder.write(0); // Reset encoder to zero at midpoint
+  encoder.write(0);
 }
 
 // Pole Placement Control Loop
@@ -140,27 +128,20 @@ void runPolePlacementControl() {
     // Read Encoder Data
     int encoderCount = encoder.read();
     x3 = encoderCount * (360.0 / 2400.0); // Convert encoder counts to angle in degrees
-    x4 = (x3 - x2) / (controlInterval / 1000.0); // Estimate angular velocity (deg/s)
+    x4 = (x3 - x2) / (controlInterval / 1000.0); // Estimate angular velocity
 
     // Control Logic
     u = -(K[0] * x1 + K[1] * x2 + K[2] * x3 + K[3] * x4); // Compute control input
     applyControl(u);
-
-   // Serial.print("Cart Position: ");
-  //  Serial.print(x1);
-    //Serial.print(" | Pendulum Angle: ");
-   // Serial.print(x3);
-   // Serial.print(" | Control Input (u): ");
-   // Serial.println(u);
   }
 }
 
 // Apply control input to the motor
 void applyControl(double u) {
   if (u > 0) {
-    stepper.setSpeed(constrain(u, 0, maxSpeed)); // Apply positive speed
+    stepper.setSpeed(constrain(u, 0, maxSpeed));
   } else {
-    stepper.setSpeed(constrain(u, -maxSpeed, 0)); // Apply negative speed
+    stepper.setSpeed(constrain(u, -maxSpeed, 0));
   }
   stepper.runSpeed();
 }
