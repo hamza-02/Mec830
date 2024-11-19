@@ -4,6 +4,7 @@
 #include <Encoder.h>
 
 bool is_on = false;
+bool set_point_initilized =false;
 
 // Pin Definitions
 const int dir_pin = 8;         // Direction pin for the stepper motor
@@ -16,8 +17,8 @@ const int start_led = 7;
 const int off_led = 6;   
 const int pole_led = 4;     
 const int pid_led = 5;  
-const int limit_switch1 = 12;  // First limit switch
-const int limit_switch2 = 13;  // Second limit switch
+const int limitSwitch1 = 12;  // First limit switch
+const int limitSwitch2 = 13;  // Second limit switch
 
 // Stepper Motor and Driver Settings
 const bool inverted = true;
@@ -44,11 +45,13 @@ PID pid(&input, &output, &set_point, kp, ki, kd, DIRECT);
 Encoder encoder(encoder_pin_a, encoder_pin_b);
 
 void setup() {
+
   output_dir = -1;
-  kp = 55.00;
-  ki = 1000.00;
-  kd = 2;
+  kp = 25.00;
+  ki = 900.00;
+  kd =2;
   scale_factor = -1 / 37.5;
+
 
   digitalWrite(off_led, HIGH);
   digitalWrite(pid_led, HIGH);
@@ -66,27 +69,29 @@ void setup() {
   pinMode(off_led, OUTPUT);
   pinMode(pole_led, OUTPUT);
   pinMode(pid_led, OUTPUT);
-  pinMode(limit_switch1, INPUT_PULLUP);
-  pinMode(limit_switch2, INPUT_PULLUP);
 
+ 
+  set_point = 0;
   encoder.write(0);
+
+
 }
 
 void loop() {
   // Read encoder count and calculate angle
   int count = encoder.read();
   double angle = count * (360.0 / 2400.0); // Convert encoder count to angle
-
-  // Handle start and stop buttons
-  while (digitalRead(start_button) == LOW && digitalRead(stop_button) == LOW) {
-    is_on = false;
+  
+  
     
+   while(digitalRead(start_button) == LOW & digitalRead(stop_button) == LOW ) {
+  //setting up the set point 
+    is_on = false;
     digitalWrite(start_led, LOW);
     digitalWrite(pid_led, HIGH);
     digitalWrite(pole_led, HIGH);
     digitalWrite(start_led, HIGH);
     digitalWrite(off_led, HIGH);
-    digitalWrite(pole_led, HIGH);
     delay(500);
     digitalWrite(pid_led, LOW);
     digitalWrite(pole_led, LOW);
@@ -96,31 +101,27 @@ void loop() {
     encoder.write(-1200);
   }
 
-  if (digitalRead(start_button) == LOW && digitalRead(stop_button) == HIGH) {
+  if (digitalRead(start_button) == LOW & digitalRead(stop_button) == HIGH)  {
     is_on = true;
     digitalWrite(off_led, LOW);
     digitalWrite(start_led, HIGH);
-    
-  } else if (digitalRead(stop_button) == LOW && digitalRead(start_button) == HIGH) {
+  }
+  else if (digitalRead(stop_button) == LOW  & digitalRead(start_button) == HIGH) {
     is_on = false;
     digitalWrite(off_led, HIGH);
     digitalWrite(start_led, LOW);
   }
   
   if (is_on) {
-    // Handle limit switches
-    
-    
-
     // Check if the angle exceeds -30 or 30 degrees
-    if (angle < -20 || angle > 20) {
+    if (angle < -20 || angle > 20 ) {
       stepper.setSpeed(0);  // Stop the motor
       stepper.runSpeed();   // Apply the stop command
       return;               // Exit the loop early
     }
 
     // Continue with PID control if angle is within -30 to 30 range
-    input = scale_factor * stepper.currentPosition() / steps_per_mm + 200 * sin(angle * (PI / 180));
+    input = 5*angle;
     pid.Compute();
 
     // Set motor speed and direction based on PID output
