@@ -1,112 +1,130 @@
-// Define pins for direction, pulse, and limit switches
-const int dirPin = 9;
-const int pulsePin = 8;
-const int limitSwitch1 = 12;
-const int limitSwitch2 = 13;
-const int encoderPinA = 2;
-const int encoderPinB = 3;
+#define ENCODER_OPTIMIZE_INTERRUPTS
+#include <AccelStepper.h>
+#include <PID_v1.h>
+#include <Encoder.h>
 
-// Motor settings
-const float stepAngle = 1.8; // Step angle in degrees
-const int microstepping = 1; // Microstepping on TB6600 driver
-const int pulsesPerRevolution = 500; // Encoder pulses per revolution
+bool is_on = false;
 
-// PID parameters
-double setpoint = 0;
-double Kp = 2.0, Ki = 0.5, Kd = 1.0;
-double previousError = 0;
-double integral = 0;
+// Pin Definitions
+const int dir_pin = 8;         // Direction pin for the stepper motor
+const int pulse_pin = 9;       // Pulse pin for the stepper motor
+const int encoder_pin_a = 2;   // Encoder pin A
+const int encoder_pin_b = 3;   // Encoder pin B
+const int stop_button = 10;    // STOP button
+const int start_button = 11;   // START button
+const int start_led = 7;   
+const int off_led = 6;   
+const int pole_led = 4;     
+const int pid_led = 5;  
+const int limit_switch1 = 12;  // First limit switch
+const int limit_switch2 = 13;  // Second limit switch
 
-// Encoder variables
-volatile int encoderCount = 0;
-bool motorEnabled = true; // Flag to control motor activity
+// Stepper Motor and Driver Settings
+const bool inverted = true;
+const int step_mode = 3;
+const int step_modes[6][5] = {
+  {5, 1, 0, 0, 0},
+  {10, 2, 1, 0, 0},
+  {20, 4, 0, 1, 0},
+  {40, 8, 1, 1, 0},
+  {80, 16, 0, 0, 1},
+  {160, 32, 1, 1, 1}
+};
 
-// Function to move motor one step with variable speed
-void moveOneStep(int pulseDelay, bool direction) {
-  digitalWrite(dirPin, direction ? HIGH : LOW);
-  digitalWrite(pulsePin, HIGH);
-  delayMicroseconds(pulseDelay);
-  digitalWrite(pulsePin, LOW);
-  delayMicroseconds(pulseDelay);
-}
+double steps_per_mm;
+int output_dir;
+AccelStepper stepper(AccelStepper::DRIVER, pulse_pin, dir_pin);
 
-// Get current angle based on encoder count
-double getCurrentAngle() {
-  return (encoderCount * 360.0) / pulsesPerRevolution;
-}
+// PID Control Variables
+double set_point, input, output, scale_factor;
+double kp, ki, kd;
+PID pid(&input, &output, &set_point, kp, ki, kd, DIRECT);
 
-// PID control function
-double calculatePID(double setpoint, double currentAngle) {
-  double error = setpoint - currentAngle;
-  integral += error;
-  double derivative = error - previousError;
-  previousError = error;
-  
-  return Kp * error + Ki * integral + Kd * derivative;
-}
-
-// Encoder ISR
-void encoderISR() {
-  if (digitalRead(encoderPinB) == HIGH) {
-    encoderCount++;
-  } else {
-    encoderCount--;
-  }
-}
+// Encoder Setup
+Encoder encoder(encoder_pin_a, encoder_pin_b);
 
 void setup() {
-  Serial.begin(9600);
+  output_dir = -1;
+  kp = 55.00;
+  ki = 1000.00;
+  kd = 2;
+  scale_factor = -1 / 37.5;
 
-  // Initialize motor pins
-  pinMode(dirPin, OUTPUT);
-  pinMode(pulsePin, OUTPUT);
-  pinMode(limitSwitch1, INPUT_PULLUP);
-  pinMode(limitSwitch2, INPUT_PULLUP);
-  
-  // Initialize encoder pins
-  pinMode(encoderPinA, INPUT_PULLUP);
-  pinMode(encoderPinB, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(encoderPinA), encoderISR, RISING);
+  digitalWrite(off_led, HIGH);
+  digitalWrite(pid_led, HIGH);
+  pid.SetTunings(kp, ki, kd);
+  pid.SetMode(AUTOMATIC);
+  pid.SetOutputLimits(-1200, 1200);
 
-  // Set initial angle as the target setpoint
-  setpoint = getCurrentAngle();
+  steps_per_mm = step_modes[step_mode][0];
+  stepper.setMaxSpeed(15000);       // Set a reasonable max speed
+  stepper.setMinPulseWidth(5);
+
+  pinMode(start_button, INPUT_PULLUP);
+  pinMode(stop_button, INPUT_PULLUP);
+  pinMode(start_led, OUTPUT);
+  pinMode(off_led, OUTPUT);
+  pinMode(pole_led, OUTPUT);
+  pinMode(pid_led, OUTPUT);
+  pinMode(limit_switch1, INPUT_PULLUP);
+  pinMode(limit_switch2, INPUT_PULLUP);
+
+  encoder.write(0);
 }
 
 void loop() {
-  // Check if either limit switch is triggered
-  if (digitalRead(limitSwitch1) == LOW || digitalRead(limitSwitch2) == LOW) {
-    motorEnabled = false; // Disable motor if a limit switch is hit
+  // Read encoder count and calculate angle
+  int count = encoder.read();
+  double angle = count * (360.0 / 2400.0); // Convert encoder count to angle
+
+  // Handle start and stop buttons
+  while (digitalRead(start_button) == LOW && digitalRead(stop_button) == LOW) {
+    is_on = false;
+    
+    digitalWrite(start_led, LOW);
+    digitalWrite(pid_led, HIGH);
+    digitalWrite(pole_led, HIGH);
+    digitalWrite(start_led, HIGH);
+    digitalWrite(off_led, HIGH);
+    digitalWrite(pole_led, HIGH);
+    delay(500);
+    digitalWrite(pid_led, LOW);
+    digitalWrite(pole_led, LOW);
+    digitalWrite(start_led, LOW);
+    digitalWrite(off_led, LOW);
+    delay(500);
+    encoder.write(-1200);
   }
 
-  // If motor is disabled, stop the program
-  if (!motorEnabled) {
-    Serial.println("Limit switch triggered. Shutting down.");
-    while (true) {
-      // Keep motor off; stay in an infinite loop
-      delay(1000); // Delay to avoid excessive serial printing
+  if (digitalRead(start_button) == LOW && digitalRead(stop_button) == HIGH) {
+    is_on = true;
+    digitalWrite(off_led, LOW);
+    digitalWrite(start_led, HIGH);
+    
+  } else if (digitalRead(stop_button) == LOW && digitalRead(start_button) == HIGH) {
+    is_on = false;
+    digitalWrite(off_led, HIGH);
+    digitalWrite(start_led, LOW);
+  }
+  
+  if (is_on) {
+    // Handle limit switches
+    
+    
+
+    // Check if the angle exceeds -30 or 30 degrees
+    if (angle < -20 || angle > 20) {
+      stepper.setSpeed(0);  // Stop the motor
+      stepper.runSpeed();   // Apply the stop command
+      return;               // Exit the loop early
     }
+
+    // Continue with PID control if angle is within -30 to 30 range
+    input = scale_factor * stepper.currentPosition() / steps_per_mm + 200 * sin(angle * (PI / 180));
+    pid.Compute();
+
+    // Set motor speed and direction based on PID output
+    stepper.setSpeed(output_dir * output);
+    stepper.runSpeed();
   }
-
-  // Get the current angle
-  double currentAngle = getCurrentAngle();
-  
-  // Calculate PID output (pulse delay and direction)
-  double pidOutput = calculatePID(setpoint, currentAngle);
-
-  // Determine motor direction and speed based on PID output
-  bool direction = pidOutput > 0 ? HIGH : LOW; // Positive moves in one direction, negative in the other
-  int pulseDelay = constrain(abs(pidOutput), 200, 2000); // Constrain pulse delay for speed control
-
-  // Move the motor based on PID output
-  moveOneStep(pulseDelay, direction);
-
-  // Print debug information
-  Serial.print("Angle: ");
-  Serial.print(currentAngle);
-  Serial.print(" | Setpoint: ");
-  Serial.print(setpoint);
-  Serial.print(" | PID Output: ");
-  Serial.println(pidOutput);
-  
-  delay(10); // Loop delay to stabilize readings (adjust as needed)
 }
