@@ -1,6 +1,6 @@
 // Define pins for direction and pulse
-const int dirPin = 9;
-const int pulsePin = 8;
+const int dirPin = 8;
+const int pulsePin = 9;
 const int limitSwitch1 = 12;
 const int limitSwitch2 = 13;
 
