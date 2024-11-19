@@ -47,9 +47,9 @@ Encoder encoder(encoder_pin_a, encoder_pin_b);
 void setup() {
 
   output_dir = -1;
-  kp = 55.00;
-  ki = 1000.00;
-  kd = 2;
+  kp = 25.00;
+  ki = 900.00;
+  kd =2;
   scale_factor = -1 / 37.5;
 
 
@@ -121,7 +121,7 @@ void loop() {
     }
 
     // Continue with PID control if angle is within -30 to 30 range
-    input = scale_factor * stepper.currentPosition() / steps_per_mm + 200 * sin(angle * (PI / 180));
+    input = 5*angle;
     pid.Compute();
 
     // Set motor speed and direction based on PID output
