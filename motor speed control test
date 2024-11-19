@@ -1,8 +1,8 @@
 #include <AccelStepper.h>
 
 // Pin Definitions
-const int dirPin = 9;         // Direction pin for the stepper motor
-const int pulsePin = 8;       // Pulse pin for the stepper motor
+const int dirPin = 8;         // Direction pin for the stepper motor
+const int pulsePin = 9;       // Pulse pin for the stepper motor
 const int limitSwitch1 = 12;  // First limit switch
 const int limitSwitch2 = 13;  // Second limit switch
 
