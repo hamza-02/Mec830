@@ -50,6 +50,8 @@ unsigned long lastControlTime = 0;
 const unsigned long controlInterval = 10; // Control loop interval in ms
 
 void setup() {
+
+  Serial.begin(1000000);
   // Stepper Motor Settings
   stepper.setMaxSpeed(maxSpeed);
   stepper.setAcceleration(acceleration);
@@ -68,6 +70,7 @@ void setup() {
 void loop() {
   // Continuously run the stepper for smooth motion
   stepper.runSpeed();
+  Serial.println(stepper.currentPosition());
 
   if (!zeroInitialized) {
     initializeZeroPosition();
@@ -91,6 +94,7 @@ void initializeZeroPosition() {
     limitSwitch1Count++;
     if (limitSwitch1Count == 2) {
       position1 = stepper.currentPosition();
+        Serial.println(stepper.currentPosition());
       if (limitSwitch2Count == 2) calculateMidpointAndMove();
     }
     movingTowardsLimit1 = false;
@@ -104,41 +108,58 @@ void initializeZeroPosition() {
     }
     movingTowardsLimit1 = true;
     stepper.setSpeed(maxSpeed);
+     Serial.println(stepper.currentPosition());
     delay(200);
   }
 }
-
 void calculateMidpointAndMove() {
   midpoint = (position1 + position2) / 2;
 
+  // Move the cart to the midpoint
   stepper.moveTo(midpoint);
   while (stepper.distanceToGo() != 0) {
     stepper.run();
   }
 
+  // Set the system's zero position to the midpoint
   zeroInitialized = true;
-  encoder.write(0);
+  encoder.write(0);           // Reset encoder to zero
+  stepper.setCurrentPosition(0); // Reset the stepper's position to zero
+  x1 = 0.0;                   // Reset cart position for control logic
 }
 
 // Pole Placement Control Logic
 void executePolePlacementControl() {
-  unsigned long currentTime = millis();
+    unsigned long currentTime = millis();
 
-  if (currentTime - lastControlTime >= controlInterval) {
-    lastControlTime = currentTime;
+    if (currentTime - lastControlTime >= controlInterval) {
+        lastControlTime = currentTime;
 
-    // Read Encoder Data
-    int encoderCount = encoder.read();
-    x3 = encoderCount * (360.0 / 2400.0); // Convert encoder counts to angle in degrees
-    x4 = (x3 - x2) / (controlInterval / 1000.0); // Estimate angular velocity
+        // Update cart position (x1) using the stepper's current position
+        double previousX1 = x1; // Store the previous position
+       // x1 = stepper.currentPosition(); // Get the current position relative to zero
+     
 
-    // Control Logic
-    u = (K[0] * x1 + K[1] * x2 + K[2] * x3 + K[3] * x4); // Compute control input
-    applyControl(u);
-  }
+        // Update cart velocity (x2)
+       // x2 = (x1 - previousX1) / (controlInterval / 1000.0); // Velocity in steps/sec
+
+        // Update pendulum angle (x3) and angular velocity (x4)
+        int encoderCount = encoder.read();
+        x3 = encoderCount * (360.0 / 2400.0); // Convert encoder counts to angle in degrees
+        x4 = (x3 - x2) / (controlInterval / 1000.0); // Estimate angular velocity
+
+        // Compute control input (u)
+        u = (K[0] * x1 + K[1] * x2 + K[2] * x3 + K[3] * x4);
+
+        // Apply the control input to the motor
+        applyControl(u);
+    }
 }
+
 
 // Apply Control Input
 void applyControl(double u) {
+  Serial.println(x1);
+  Serial.println(u);
   stepper.setSpeed(constrain(4*u, -maxSpeed, maxSpeed));
 }
